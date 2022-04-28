@@ -13,7 +13,7 @@ const Navigation = () => {
         dots: false,
         infinite: true,
         centerMode: false,
-        // slidesToShow: 1,
+        slidesToShow: 1,
         // slidesToScroll: 1,
         swipeToSlide: true,
         variableWidth: true,
@@ -35,33 +35,33 @@ const Navigation = () => {
                     }
                     onClick={getActiveMenu}
                 >
-                    <NavLink to="/123" id="breakfast">
+                    <NavLink to="/breakfast" id="breakfast">
                         Завтраки
                     </NavLink>
                 </div>
 
                 <div
                     className={
-                        activeClass === 'salats'
+                        activeClass === 'saladsAndSnacks'
                             ? `${s.item} ${s.activeLink}`
                             : `${s.item}`
                     }
                     onClick={getActiveMenu}
                 >
-                    <NavLink to="" id="salats">
+                    <NavLink to="/salads-snacks" id="saladsAndSnacks">
                         Салаты и закуски
                     </NavLink>
                 </div>
 
                 <div
                     className={
-                        activeClass === 'soup'
+                        activeClass === 'soups'
                             ? `${s.item} ${s.activeLink}`
                             : `${s.item}`
                     }
                     onClick={getActiveMenu}
                 >
-                    <NavLink to="" id="soup">
+                    <NavLink to="soups" id="soups">
                         Супы
                     </NavLink>
                 </div>
@@ -74,33 +74,33 @@ const Navigation = () => {
                     }
                     onClick={getActiveMenu}
                 >
-                    <NavLink to="" id="burgers">
+                    <NavLink to="burgers" id="burgers">
                         Бургеры и сэндвичи
                     </NavLink>
                 </div>
 
                 <div
                     className={
-                        activeClass === 'maindish'
+                        activeClass === 'maindishes'
                             ? `${s.item} ${s.activeLink}`
                             : `${s.item}`
                     }
                     onClick={getActiveMenu}
                 >
-                    <NavLink to="" id="maindish">
+                    <NavLink to="maindishes" id="maindishes">
                         Горячие блюда
                     </NavLink>
                 </div>
 
                 <div
                     className={
-                        activeClass === 'deserts'
+                        activeClass === 'desserts'
                             ? `${s.item} ${s.activeLink}`
                             : `${s.item}`
                     }
                     onClick={getActiveMenu}
                 >
-                    <NavLink to="" id="deserts">
+                    <NavLink to="desserts" id="desserts">
                         Десерты
                     </NavLink>
                 </div>
@@ -113,7 +113,7 @@ const Navigation = () => {
                     }
                     onClick={getActiveMenu}
                 >
-                    <NavLink to="" id="drinks">
+                    <NavLink to="drinks" id="drinks">
                         Напитки
                     </NavLink>
                 </div>
