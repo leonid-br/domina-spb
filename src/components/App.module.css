@@ -1,3 +1,13 @@
+.app {
+    position: relative;
+    /* margin-left: 10px;
+    margin-right: 10px; */
+}
+
 .title {
-    font-weight: bold;
+    position: sticky;
+    top: 0;
+    background-color: #fff;
+    border-radius: 0 0 10px 10px;
+    box-shadow: 0 2px 12px rgb(0 0 0 / 5%);
 }

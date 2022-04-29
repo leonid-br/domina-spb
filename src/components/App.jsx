@@ -15,8 +15,10 @@ import s from './App.module.css';
 function App() {
     return (
         <div className={s.app}>
-            <Header />
-            <Navigation />
+            <div className={s.title}>
+                <Header />
+                <Navigation />
+            </div>
             <Suspense fallback={<h2>Loading...</h2>}>
                 <Routes>
                     <Route
