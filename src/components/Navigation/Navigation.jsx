@@ -16,11 +16,10 @@ const Navigation = () => {
                 className={className}
                 style={{
                     ...style,
-                    // border: '1px solid red',
                     width: '8px',
                     height: '8px',
-                    borderTop: '2px solid #6E18C0',
-                    borderRight: '2px solid #6E18C0',
+                    borderTop: '2px solid #c5a46d',
+                    borderRight: '2px solid #c5a46d',
                     transform: 'rotate(45deg) translate(0, -50%)',
                     position: 'absolute',
                     top: '45%',
@@ -41,8 +40,8 @@ const Navigation = () => {
 
                     width: '8px',
                     height: '8px',
-                    borderTop: '2px solid #6E18C0',
-                    borderRight: '2px solid #6E18C0',
+                    borderTop: '2px solid #c5a46d',
+                    borderRight: '2px solid #c5a46d',
                     transform: 'rotate(-135deg) translate(0, -50%)',
                     position: 'absolute',
                     top: '25%',
@@ -52,7 +51,7 @@ const Navigation = () => {
             />
         );
     }
-    const style = { background: 'green' };
+
     const settings = {
         // className: 'slider variable-width',
         dots: false,
@@ -62,7 +61,7 @@ const Navigation = () => {
         slidesToScroll: 1,
         swipeToSlide: true,
         variableWidth: true,
-        nextArrow: <SampleNextArrow style={style} />,
+        nextArrow: <SampleNextArrow />,
         prevArrow: <SamplePrevArrow />,
     };
 

@@ -1,15 +1,12 @@
 .app {
     position: relative;
-    /* padding: 0 5px; */
-    /* margin-left: 10px;
-    margin-right: 10px; */
 }
 
 .title {
     position: sticky;
     top: 0;
     padding: 0 30px;
-    background-color: #fff;
+    background-color: #65554e;
     border-radius: 0 0 10px 10px;
     box-shadow: 0 2px 12px rgb(0 0 0 / 5%);
 }

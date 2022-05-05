@@ -4,15 +4,13 @@
     font-size: 14px;
 }
 
+.item a {
+    padding: 2px;
+    color: white;
+}
+
 .activeLink a {
-    color: red;
-}
-
-.next {
-    color: green;
-    border-width: 9px 12px 90px 0;
-}
-
-.slickNext {
-    background: red;
+    color: var(--color-active);
+    border-top: 1px solid var(--color-active);
+    border-bottom: 1px solid var(--color-active);
 }

@@ -1,0 +1,32 @@
+diff --git a/node_modules/react-switch-input/components/switch.css b/node_modules/react-switch-input/components/switch.css
+index 978a026..8401a9a 100644
+--- a/node_modules/react-switch-input/components/switch.css
++++ b/node_modules/react-switch-input/components/switch.css
+@@ -128,11 +128,11 @@ CONTENT
+ }
+ 
+ .input-switch.style-switch-one input[type="checkbox"]:checked + label:before {
+-  background-color: #1891fb;
++  background-color: white;
+ }
+ 
+ .input-switch.style-switch-one input[type="checkbox"]:checked + label {
+-  background-color: #0073da;
++  background-color: white;
+ }
+ 
+ .input-switch.style-switch-one input[type="checkbox"]:checked + label:after {
+@@ -159,11 +159,11 @@ CONTENT
+ }
+ 
+ .input-switch.style-switch-two input[type="checkbox"]:checked + label:before {
+-  background-color: #0091ff;
++  background-color: white;
+ }
+ 
+ .input-switch.style-switch-two input[type="checkbox"]:checked + label {
+-  background-color: #0091ff;
++  background-color: white;
+ }
+ 
+ .input-switch.style-switch-two input[type="checkbox"]:checked + label:after {

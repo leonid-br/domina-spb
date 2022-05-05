@@ -30,3 +30,11 @@ img {
 .slick-prev:before {
     content: '';
 }
+
+input#switch + label::before {
+    background-color: #fff;
+}
+
+input#switch + label {
+    background-color: #fff;
+}
