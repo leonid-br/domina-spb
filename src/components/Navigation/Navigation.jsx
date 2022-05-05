@@ -8,16 +8,62 @@ import s from './Navigation.module.css';
 const Navigation = () => {
     const [activeClass, setActiveClass] = useState('');
 
+    function SampleNextArrow(props) {
+        const { className, style, onClick } = props;
+
+        return (
+            <div
+                className={className}
+                style={{
+                    ...style,
+                    // border: '1px solid red',
+                    width: '8px',
+                    height: '8px',
+                    borderTop: '2px solid #6E18C0',
+                    borderRight: '2px solid #6E18C0',
+                    transform: 'rotate(45deg) translate(0, -50%)',
+                    position: 'absolute',
+                    top: '45%',
+                    right: '-15px',
+                }}
+                onClick={onClick}
+            />
+        );
+    }
+
+    function SamplePrevArrow(props) {
+        const { className, style, onClick } = props;
+        return (
+            <div
+                className={className}
+                style={{
+                    ...style,
+
+                    width: '8px',
+                    height: '8px',
+                    borderTop: '2px solid #6E18C0',
+                    borderRight: '2px solid #6E18C0',
+                    transform: 'rotate(-135deg) translate(0, -50%)',
+                    position: 'absolute',
+                    top: '25%',
+                    left: '-10px',
+                }}
+                onClick={onClick}
+            />
+        );
+    }
+    const style = { background: 'green' };
     const settings = {
-        className: 'slider variable-width',
+        // className: 'slider variable-width',
         dots: false,
         infinite: true,
         centerMode: false,
         slidesToShow: 1,
-        // slidesToScroll: 1,
+        slidesToScroll: 1,
         swipeToSlide: true,
         variableWidth: true,
-        arrows: false,
+        nextArrow: <SampleNextArrow style={style} />,
+        prevArrow: <SamplePrevArrow />,
     };
 
     const getActiveMenu = e => {

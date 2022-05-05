@@ -1,4 +1,4 @@
-import patrik from './nonPhoto.jpg';
+import test from 'images/1.jpg';
 import s from './Dish.module.css';
 
 export default function Dish({ data }) {
@@ -9,15 +9,22 @@ export default function Dish({ data }) {
                     src={
                         ''
                             ? `https://image.tmdb.org/t/p/w500`
-                            : `${patrik}`
+                            : `${test}`
                     }
                     alt={data.name}
-                    // width={100}
-                    // height={100}
+                    className={s.img}
                 />
-                <h3>{data.name}</h3>
-                <p>{data.description}</p>
-                <span>{data.price}</span>
+                <div className={s.description}>
+                    <h3 className={s.title}>{data.name}</h3>
+                    <p className={s.subtitle}>{data.description}</p>
+
+                    <div className={s.box}>
+                        <p className={s.price}>{data.price} p.</p>
+                        <button type="button" className={s.addDish}>
+                            +
+                        </button>
+                    </div>
+                </div>
             </div>
         </>
     );

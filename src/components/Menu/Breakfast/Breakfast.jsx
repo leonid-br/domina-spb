@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import data from './data.js';
 import Dish from 'components/Dish/index.js';
-import '../style.css';
+import '../menuStyle.css';
 
 export default function Breakfast() {
     const [language, setLanguage] = useState(true);
