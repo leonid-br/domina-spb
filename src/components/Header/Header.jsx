@@ -17,7 +17,9 @@ const Header = () => {
     return (
         <header>
             <img src={logo} alt="logo" className={s.logo} />
+            <span>ru</span>
             <Switch onChange={handleChange} />
+            <span className={s.en}>en</span>
         </header>
     );
 };

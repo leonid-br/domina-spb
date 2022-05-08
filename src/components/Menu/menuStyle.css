@@ -32,9 +32,9 @@ img {
 }
 
 input#switch + label::before {
-    background-color: #fff;
+    background-color: var(--color-active);
 }
 
 input#switch + label {
-    background-color: #fff;
+    background-color: var(--color-active);
 }

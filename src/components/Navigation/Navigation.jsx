@@ -1,12 +1,23 @@
 import { useState } from 'react';
-import Slider from 'react-slick';
-
 import { NavLink } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import Slider from 'react-slick';
+import {
+    Link,
+    DirectLink,
+    Element,
+    Events,
+    animateScroll as scroll,
+    scrollSpy,
+    scroller,
+} from 'react-scroll';
 
 import s from './Navigation.module.css';
+import { getLanguage } from 'redux/language/language-selectors.js';
 
 const Navigation = () => {
     const [activeClass, setActiveClass] = useState('');
+    const { language } = useSelector(getLanguage);
 
     function SampleNextArrow(props) {
         const { className, style, onClick } = props;
@@ -81,7 +92,7 @@ const Navigation = () => {
                     onClick={getActiveMenu}
                 >
                     <NavLink to="/breakfast" id="breakfast">
-                        Завтраки
+                        {language ? 'Завтраки' : 'Breakfast'}
                     </NavLink>
                 </div>
 
@@ -94,7 +105,9 @@ const Navigation = () => {
                     onClick={getActiveMenu}
                 >
                     <NavLink to="/salads-snacks" id="saladsAndSnacks">
-                        Салаты и закуски
+                        {language
+                            ? 'Салаты и закуски'
+                            : 'Salads and Snacks'}
                     </NavLink>
                 </div>
 
@@ -106,9 +119,9 @@ const Navigation = () => {
                     }
                     onClick={getActiveMenu}
                 >
-                    <NavLink to="soups" id="soups">
-                        Супы
-                    </NavLink>
+                    <Link to="soups" id="soups" spy={true}>
+                        {language ? 'Супы' : 'Soups'}
+                    </Link>
                 </div>
 
                 <div
@@ -120,7 +133,9 @@ const Navigation = () => {
                     onClick={getActiveMenu}
                 >
                     <NavLink to="burgers" id="burgers">
-                        Бургеры и сэндвичи
+                        {language
+                            ? 'Бургеры и сэндвичи'
+                            : 'Bourgers and Sandwiches'}
                     </NavLink>
                 </div>
 
@@ -133,7 +148,7 @@ const Navigation = () => {
                     onClick={getActiveMenu}
                 >
                     <NavLink to="maindishes" id="maindishes">
-                        Горячие блюда
+                        {language ? 'Горячие блюда' : 'Main Dishes'}
                     </NavLink>
                 </div>
 
@@ -146,7 +161,7 @@ const Navigation = () => {
                     onClick={getActiveMenu}
                 >
                     <NavLink to="desserts" id="desserts">
-                        Десерты
+                        {language ? 'Десерты' : 'Desserts'}
                     </NavLink>
                 </div>
 
@@ -159,7 +174,7 @@ const Navigation = () => {
                     onClick={getActiveMenu}
                 >
                     <NavLink to="drinks" id="drinks">
-                        Напитки
+                        {language ? 'Напитки' : 'Drinks'}
                     </NavLink>
                 </div>
             </Slider>

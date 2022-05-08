@@ -12,6 +12,16 @@ import Desserts from './Menu/Desserts';
 import Drinks from './Menu/Drinks';
 import s from './App.module.css';
 
+import {
+    Link,
+    DirectLink,
+    Element,
+    Events,
+    animateScroll as scroll,
+    scrollSpy,
+    scroller,
+} from 'react-scroll';
+
 function App() {
     return (
         <div className={s.app}>
@@ -19,7 +29,7 @@ function App() {
                 <Header />
                 <Navigation />
             </div>
-            <Suspense fallback={<h2>Loading...</h2>}>
+            {/* <Suspense fallback={<h2>Loading...</h2>}>
                 <Routes>
                     <Route
                         path="/breakfast"
@@ -38,7 +48,16 @@ function App() {
                     <Route path="/desserts" element={<Desserts />} />
                     <Route path="/drinks" element={<Drinks />} />
                 </Routes>
-            </Suspense>
+            </Suspense> */}
+            <Breakfast />
+            <SaladsAndSnacks />
+            <Element name="soups">
+                <Soups />
+            </Element>
+            <Burgers />
+            <MainDishes />
+            <Desserts />
+            <Drinks />
         </div>
     );
 }

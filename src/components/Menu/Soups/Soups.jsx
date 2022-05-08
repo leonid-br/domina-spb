@@ -10,6 +10,7 @@ export default function Soups() {
 
     return (
         <>
+            <h2>Супы</h2>
             <ul className="menu-list">
                 {language
                     ? data.ru.map(el => (
