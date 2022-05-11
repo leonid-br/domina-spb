@@ -1,7 +1,11 @@
+import { useDispatch } from 'react-redux';
+
 import test from 'images/1.jpg';
 import s from './Dish.module.css';
+import actions from 'redux/order/order-actions';
 
 export default function Dish({ data }) {
+    const dispatch = useDispatch();
     return (
         <>
             <div className={s.item}>
@@ -20,7 +24,13 @@ export default function Dish({ data }) {
 
                     <div className={s.box}>
                         <p className={s.price}>{data.price} p.</p>
-                        <button type="button" className={s.addDish}>
+                        <button
+                            type="button"
+                            className={s.addDish}
+                            onClick={() =>
+                                dispatch(actions.addDish(data))
+                            }
+                        >
                             +
                         </button>
                     </div>

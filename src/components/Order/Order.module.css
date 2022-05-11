@@ -1,0 +1,18 @@
+.orderBlock {
+    position: fixed;
+    bottom: 10px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    margin-right: -50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 10px;
+    width: 265px;
+    height: 52px;
+
+    border-radius: 60px;
+    background-color: red;
+}

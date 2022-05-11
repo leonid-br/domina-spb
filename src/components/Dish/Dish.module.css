@@ -41,7 +41,7 @@
     text-align: left;
     font-size: 12px;
     font-weight: bold;
-    color: var(--color-price);
+    color: var(--color-active);
 }
 
 .addDish {
@@ -49,7 +49,7 @@
     border: none;
     font-weight: 500;
     font-size: 20px;
-    color: #cc1d00;
+    color: var(--color-active);
     background-color: #f8f8f8;
     padding: 2px 9px;
     border-radius: 105px;

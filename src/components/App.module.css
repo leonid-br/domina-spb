@@ -4,9 +4,16 @@
 
 .title {
     position: sticky;
+    z-index: 999;
     top: 0;
     padding: 0 30px;
     background-color: #65554e;
     border-radius: 0 0 10px 10px;
     box-shadow: 0 2px 12px rgb(0 0 0 / 5%);
+}
+
+.dishes {
+    position: relative;
+    height: 1200px;
+    overflow: scroll;
 }

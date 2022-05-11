@@ -89,11 +89,19 @@ const Navigation = () => {
                             ? `${s.item} ${s.activeLink}`
                             : `${s.item}`
                     }
-                    onClick={getActiveMenu}
+                    // onClick={getActiveMenu}
                 >
-                    <NavLink to="/breakfast" id="breakfast">
+                    <Link
+                        to="breakfast"
+                        id="breakfast"
+                        containerId="containerElement"
+                        spy={true}
+                        smooth={true}
+                        duration={250}
+                        onClick={getActiveMenu}
+                    >
                         {language ? 'Завтраки' : 'Breakfast'}
-                    </NavLink>
+                    </Link>
                 </div>
 
                 <div
@@ -102,13 +110,21 @@ const Navigation = () => {
                             ? `${s.item} ${s.activeLink}`
                             : `${s.item}`
                     }
-                    onClick={getActiveMenu}
+                    // onClick={getActiveMenu}
                 >
-                    <NavLink to="/salads-snacks" id="saladsAndSnacks">
+                    <Link
+                        to="saladsAndSnacks"
+                        id="saladsAndSnacks"
+                        containerId="containerElement"
+                        spy={true}
+                        smooth={true}
+                        duration={250}
+                        onClick={getActiveMenu}
+                    >
                         {language
                             ? 'Салаты и закуски'
                             : 'Salads and Snacks'}
-                    </NavLink>
+                    </Link>
                 </div>
 
                 <div
@@ -117,9 +133,17 @@ const Navigation = () => {
                             ? `${s.item} ${s.activeLink}`
                             : `${s.item}`
                     }
-                    onClick={getActiveMenu}
+                    // onClick={getActiveMenu}
                 >
-                    <Link to="soups" id="soups" spy={true}>
+                    <Link
+                        to="soups"
+                        id="soups"
+                        containerId="containerElement"
+                        spy={true}
+                        smooth={true}
+                        duration={250}
+                        onClick={getActiveMenu}
+                    >
                         {language ? 'Супы' : 'Soups'}
                     </Link>
                 </div>
@@ -130,13 +154,21 @@ const Navigation = () => {
                             ? `${s.item} ${s.activeLink}`
                             : `${s.item}`
                     }
-                    onClick={getActiveMenu}
+                    // onClick={getActiveMenu}
                 >
-                    <NavLink to="burgers" id="burgers">
+                    <Link
+                        to="burgers"
+                        id="burgers"
+                        containerId="containerElement"
+                        spy={true}
+                        smooth={true}
+                        duration={250}
+                        onClick={getActiveMenu}
+                    >
                         {language
                             ? 'Бургеры и сэндвичи'
                             : 'Bourgers and Sandwiches'}
-                    </NavLink>
+                    </Link>
                 </div>
 
                 <div
@@ -145,11 +177,19 @@ const Navigation = () => {
                             ? `${s.item} ${s.activeLink}`
                             : `${s.item}`
                     }
-                    onClick={getActiveMenu}
+                    // onClick={getActiveMenu}
                 >
-                    <NavLink to="maindishes" id="maindishes">
+                    <Link
+                        to="maindishes"
+                        id="maindishes"
+                        containerId="containerElement"
+                        spy={true}
+                        smooth={true}
+                        duration={250}
+                        onClick={getActiveMenu}
+                    >
                         {language ? 'Горячие блюда' : 'Main Dishes'}
-                    </NavLink>
+                    </Link>
                 </div>
 
                 <div
@@ -158,11 +198,19 @@ const Navigation = () => {
                             ? `${s.item} ${s.activeLink}`
                             : `${s.item}`
                     }
-                    onClick={getActiveMenu}
+                    // onClick={getActiveMenu}
                 >
-                    <NavLink to="desserts" id="desserts">
+                    <Link
+                        to="desserts"
+                        id="desserts"
+                        containerId="containerElement"
+                        spy={true}
+                        smooth={true}
+                        duration={250}
+                        onClick={getActiveMenu}
+                    >
                         {language ? 'Десерты' : 'Desserts'}
-                    </NavLink>
+                    </Link>
                 </div>
 
                 <div
@@ -173,9 +221,17 @@ const Navigation = () => {
                     }
                     onClick={getActiveMenu}
                 >
-                    <NavLink to="drinks" id="drinks">
+                    <Link
+                        to="drinks"
+                        id="drinks"
+                        containerId="containerElement"
+                        spy={true}
+                        smooth={true}
+                        duration={250}
+                        onClick={getActiveMenu}
+                    >
                         {language ? 'Напитки' : 'Drinks'}
-                    </NavLink>
+                    </Link>
                 </div>
             </Slider>
         </nav>
