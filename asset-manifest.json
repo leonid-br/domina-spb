@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/domina-spb/static/css/main.dca9421a.css",
-    "main.js": "/domina-spb/static/js/main.88017e6c.js",
+    "main.js": "/domina-spb/static/js/main.fabc8232.js",
     "static/media/lato-normal-italic.woff": "/domina-spb/static/media/lato-normal-italic.62a9c838c99d073c7ba6.woff",
     "static/media/lato-semibold-italic.woff": "/domina-spb/static/media/lato-semibold-italic.3fdee263fe69b843601f.woff",
     "static/media/lato-medium-italic.woff": "/domina-spb/static/media/lato-medium-italic.9ba7233345056c919454.woff",
@@ -46,10 +46,10 @@
     "static/media/slick.woff": "/domina-spb/static/media/slick.295183786cd8a1389865.woff",
     "index.html": "/domina-spb/index.html",
     "main.dca9421a.css.map": "/domina-spb/static/css/main.dca9421a.css.map",
-    "main.88017e6c.js.map": "/domina-spb/static/js/main.88017e6c.js.map"
+    "main.fabc8232.js.map": "/domina-spb/static/js/main.fabc8232.js.map"
   },
   "entrypoints": [
     "static/css/main.dca9421a.css",
-    "static/js/main.88017e6c.js"
+    "static/js/main.fabc8232.js"
   ]
 }
