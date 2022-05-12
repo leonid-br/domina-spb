@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import Header from './Header';
 import Navigation from './Navigation';
-import Section from 'components/Menu/Section';
+import Сhapter from 'components/Menu/Сhapter';
 import Order from './Order';
 import { getLanguage } from 'redux/language/language-selectors.js';
 import { getOrder } from 'redux/order/order-selectors';
@@ -19,6 +19,7 @@ import s from './App.module.css';
 
 import { Element } from 'react-scroll';
 import data from './Menu/data';
+import Section from './Section';
 
 function App() {
     const { language } = useSelector(getLanguage);
@@ -56,43 +57,45 @@ function App() {
                 className={s.dishes}
             >
                 {language
-                    ? Object.keys(data.ru).map(
-                          (dataSection, idx) => (
-                              <Element
-                                  name={data.name[idx]}
-                                  key={dataSection}
-                              >
-                                  <Section
-                                      title={dataSection}
-                                      data={data.ru[dataSection]}
-                                  />
-                              </Element>
-                          ),
-                          //   console.log(data.name[idx]),
-                      )
-                    : Object.keys(data.en).map(
-                          (dataSection, idx) => (
-                              <Element
-                                  name={data.name[idx]}
-                                  key={dataSection}
-                              >
-                                  <Section
-                                      title={dataSection}
-                                      data={data.en[dataSection]}
-                                  />
-                              </Element>
-                          ),
-                          //   console.log(data.name[idx]),
-                      )}
-                {/* <Breakfast />
-                <SaladsAndSnacks /> */}
-                {/* <Element name="soups">
+                    ? Object.keys(data.ru).map((dataSection, idx) => (
+                          //   <Element
+                          //       name={data.name[idx]}
+                          //       key={dataSection}
+                          //   >
+                          <Section id={data.name[idx]}>
+                              <Сhapter
+                                  title={dataSection}
+                                  data={data.ru[dataSection]}
+                              />
+                          </Section>
+                          /* </Element> */
+                      ))
+                    : Object.keys(data.en).map((dataSection, idx) => (
+                          //   <Element
+                          //       name={data.name[idx]}
+                          //       key={dataSection}
+                          //   >
+                          <Section id={data.name[idx]}>
+                              <Сhapter
+                                  title={dataSection}
+                                  data={data.en[dataSection]}
+                              />
+                          </Section>
+                          //   </Element>
+                      ))}
+                {/* <Section id="breakfast">
+                    <Breakfast />
+                </Section>
+                <Section id="saladsAndSnacks">
+                    <SaladsAndSnacks />
+                </Section>
+                <Section id="soups">
                     <Soups />
-                </Element>
-                <Element name="burgers">
+                </Section>
+                <Section id="burgers">
                     <Burgers />
-                </Element> */}
-                {/* <MainDishes />
+                </Section>
+                <MainDishes />
                 <Desserts />
                 <Drinks /> */}
             </div>

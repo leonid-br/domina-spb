@@ -9,7 +9,75 @@ const data = {
         'drinks',
     ],
     ru: {
-        Завтраки: [],
+        Завтраки: [
+            {
+                id: 28,
+                name: 'Яичница – глазунья с добавками на выбор',
+                price: 320,
+                description: 'лук, бекон, грибы, сыр, томаты, зелень',
+            },
+            {
+                id: 29,
+                name: 'Омлет с добавками на выбор',
+                price: 350,
+                description: 'лук, бекон, грибы, сыр, томаты, зелень',
+            },
+            {
+                id: 30,
+                name: 'Яйца бенедикт с беконом и голландским соусом',
+                price: 390,
+                description: '',
+            },
+            {
+                id: 31,
+                name: 'Яйца роял с лососем, шпинатом и голландским соусом',
+                price: 490,
+                description: '',
+            },
+            {
+                id: 32,
+                name: 'Оладьи из цуккини с лососем и рикоттой',
+                price: 490,
+                description: '',
+            },
+            {
+                id: 33,
+                name: 'Каша овсяная',
+                price: 300,
+                description: '',
+            },
+            {
+                id: 34,
+                name: 'Асаи боул',
+                price: 350,
+                description: '',
+            },
+            {
+                id: 35,
+                name: 'Блинчики по-русски',
+                price: 300,
+                description:
+                    'подаются со сметаной и домашним вареньем',
+            },
+            {
+                id: 36,
+                name: 'Хрустящие бельгийские вафли',
+                price: 330,
+                description: '',
+            },
+            {
+                id: 37,
+                name: 'Сырники с сезонными ягодами и сметаной',
+                price: 350,
+                description: '',
+            },
+            {
+                id: 38,
+                name: 'Красная икра с блинами',
+                price: 840,
+                description: '',
+            },
+        ],
         'Салаты и закуски': [
             {
                 id: 1,
@@ -187,10 +255,103 @@ const data = {
                 price: 650,
                 description: '',
             },
+            {
+                id: 39,
+                name: 'Домашнее мороженое и сорбеты',
+                price: 650,
+                description: '',
+            },
+            {
+                id: 40,
+                name: 'Домашнее мороженое и сорбеты',
+                price: 650,
+                description: '',
+            },
+            {
+                id: 41,
+                name: 'Домашнее мороженое и сорбеты',
+                price: 650,
+                description: '',
+            },
+            {
+                id: 42,
+                name: 'Домашнее мороженое и сорбеты',
+                price: 650,
+                description: '',
+            },
         ],
     },
     en: {
-        Breackfast: [],
+        Breakfast: [
+            {
+                id: 28,
+                name: 'Fried eggs with toppings of your choice',
+                price: 320,
+                description:
+                    'onion, bacon, mushrooms, cheese, tomatoes, greens',
+            },
+            {
+                id: 29,
+                name: 'Omelet with toppings of your choice',
+                price: 350,
+                description:
+                    'onion, bacon, mushrooms, cheese, tomatoes, greens',
+            },
+            {
+                id: 30,
+                name: 'Eggs Benedict with bacon and Hollandaise sauce',
+                price: 390,
+                description: '',
+            },
+            {
+                id: 31,
+                name: 'Royal eggs with salmon, spinach and Hollandaise sauce',
+                price: 490,
+                description: '',
+            },
+            {
+                id: 32,
+                name: 'Zucchini pancakes with salmon and ricotta',
+                price: 490,
+                description: '',
+            },
+            {
+                id: 33,
+                name: 'Oatmeal porridge',
+                price: 300,
+                description: '',
+            },
+            {
+                id: 34,
+                name: 'Acai bowl',
+                price: 350,
+                description: '',
+            },
+            {
+                id: 35,
+                name: 'Russian style pancakes',
+                price: 300,
+                description: 'served with jam and sour cream',
+            },
+            {
+                id: 36,
+                name: 'Crispy Belgian waffles',
+                price: 330,
+                description: '',
+            },
+            {
+                id: 37,
+                name: 'Cottage cheese pancakes with seasonal berries and sour cream',
+                price: 350,
+                description: '',
+            },
+            {
+                id: 38,
+                name: 'Salmon caviar with with russian pancakes',
+                price: 840,
+                description: '',
+            },
+        ],
         'Salads and Snacks': [
             {
                 id: 1,

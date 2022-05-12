@@ -2,15 +2,8 @@ import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import Slider from 'react-slick';
-import {
-    Link,
-    DirectLink,
-    Element,
-    Events,
-    animateScroll as scroll,
-    scrollSpy,
-    scroller,
-} from 'react-scroll';
+import { Link } from 'react-scroll';
+import ScrollToButton from 'components/ScrollToButton';
 
 import s from './Navigation.module.css';
 import { getLanguage } from 'redux/language/language-selectors.js';
@@ -76,20 +69,20 @@ const Navigation = () => {
         prevArrow: <SamplePrevArrow />,
     };
 
-    const getActiveMenu = e => {
-        setActiveClass(e.target.id);
+    const getActiveMenu = id => {
+        setActiveClass(id);
+        console.log('Navigation ~ e.target.id', id);
     };
 
     return (
         <nav>
             <Slider {...settings}>
-                <div
+                {/* <div
                     className={
                         activeClass === 'breakfast'
                             ? `${s.item} ${s.activeLink}`
                             : `${s.item}`
                     }
-                    // onClick={getActiveMenu}
                 >
                     <Link
                         to="breakfast"
@@ -232,6 +225,104 @@ const Navigation = () => {
                     >
                         {language ? 'Напитки' : 'Drinks'}
                     </Link>
+                </div> */}
+
+                <div
+                    className={
+                        activeClass === 'breakfast'
+                            ? `${s.item} ${s.activeLink}`
+                            : `${s.item}`
+                    }
+                    onClick={() => getActiveMenu('breakfast')}
+                >
+                    <ScrollToButton
+                        toId="breakfast"
+                        onClick={getActiveMenu}
+                    >
+                        {language ? 'Завтраки' : 'Breakfast'}
+                    </ScrollToButton>
+                </div>
+
+                <div
+                    className={
+                        activeClass === 'saladsAndSnacks'
+                            ? `${s.item} ${s.activeLink}`
+                            : `${s.item}`
+                    }
+                    onClick={() => getActiveMenu('saladsAndSnacks')}
+                >
+                    <ScrollToButton toId="saladsAndSnacks">
+                        {language
+                            ? 'Салаты и закуски'
+                            : 'Salads and Snacks'}{' '}
+                    </ScrollToButton>
+                </div>
+
+                <div
+                    className={
+                        activeClass === 'soups'
+                            ? `${s.item} ${s.activeLink}`
+                            : `${s.item}`
+                    }
+                    onClick={() => getActiveMenu('soups')}
+                >
+                    <ScrollToButton toId="soups">
+                        {language ? 'Супы' : 'Soups'}{' '}
+                    </ScrollToButton>
+                </div>
+
+                <div
+                    className={
+                        activeClass === 'burgers'
+                            ? `${s.item} ${s.activeLink}`
+                            : `${s.item}`
+                    }
+                    onClick={() => getActiveMenu('burgers')}
+                >
+                    <ScrollToButton toId="burgers">
+                        {language
+                            ? 'Бургеры и сэндвичи'
+                            : 'Bourgers and Sandwiches'}
+                    </ScrollToButton>
+                </div>
+
+                <div
+                    className={
+                        activeClass === 'maindishes'
+                            ? `${s.item} ${s.activeLink}`
+                            : `${s.item}`
+                    }
+                    onClick={() => getActiveMenu('maindishes')}
+                >
+                    <ScrollToButton toId="maindishes">
+                        {language ? 'Горячие блюда' : 'Main Dishes'}
+                    </ScrollToButton>
+                </div>
+
+                <div
+                    className={
+                        activeClass === 'desserts'
+                            ? `${s.item} ${s.activeLink}`
+                            : `${s.item}`
+                    }
+                    onClick={() => getActiveMenu('desserts')}
+                >
+                    <ScrollToButton toId="desserts">
+                        {language ? 'Десерты' : 'Desserts'}{' '}
+                    </ScrollToButton>
+                </div>
+
+                <div
+                    className={
+                        activeClass === 'drinks'
+                            ? `${s.item} ${s.activeLink}`
+                            : `${s.item}`
+                    }
+                    onClick={() => getActiveMenu('drinks')}
+                >
+                    <ScrollToButton toId="drinks">
+                        {language ? 'Напитки' : 'Drinks'}
+                    </ScrollToButton>
                 </div>
             </Slider>
         </nav>
