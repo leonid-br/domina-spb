@@ -8,6 +8,7 @@ const data = {
         'desserts',
         'drinks',
     ],
+    id: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
     ru: {
         Завтраки: [
             {
@@ -77,6 +78,12 @@ const data = {
                 price: 840,
                 description: '',
             },
+            {
+                id: 8,
+                name: 'Икра осетровая с блинами',
+                price: 7200,
+                description: '50 гр',
+            },
         ],
         'Салаты и закуски': [
             {
@@ -121,12 +128,6 @@ const data = {
                 name: 'Салат из сезонных овощей с халуми',
                 price: 740,
                 description: '',
-            },
-            {
-                id: 8,
-                name: 'Икра осетровая с блинами',
-                price: 7200,
-                description: '50 гр',
             },
         ],
         Супы: [
@@ -351,6 +352,12 @@ const data = {
                 price: 840,
                 description: '',
             },
+            {
+                id: 8,
+                name: 'Black caviar with russian pancakes',
+                price: 5200,
+                description: '50 gr',
+            },
         ],
         'Salads and Snacks': [
             {
@@ -395,12 +402,6 @@ const data = {
                 name: 'Seasonal vegetables with halloumi',
                 price: 740,
                 description: '',
-            },
-            {
-                id: 8,
-                name: 'Black caviar with russian pancakes',
-                price: 5200,
-                description: '50 gr',
             },
         ],
         Soups: [

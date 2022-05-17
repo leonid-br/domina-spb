@@ -8,7 +8,7 @@ export default function Сhapter({ title, data }) {
             <ul className="menu-list">
                 {data.map(el => (
                     <li key={el.id} className="menu-item">
-                        <Dish data={el} />
+                        <Dish data={el} key={el.id} />
                     </li>
                 ))}
             </ul>

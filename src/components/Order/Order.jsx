@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 import { getOrder } from 'redux/order/order-selectors';
@@ -7,8 +8,8 @@ import s from './Order.module.css';
 export default function Order() {
     const { order } = useSelector(getOrder);
     const { language } = useSelector(getLanguage);
+    const navigate = useNavigate();
 
-    console.log(order);
     const getSumOrder = () =>
         order.reduce((acc, cur) => acc + cur.price, 0);
     const sum = String(getSumOrder(order)).replace(
@@ -16,12 +17,16 @@ export default function Order() {
         '$1 ',
     );
 
+    const handleClick = () => {
+        navigate('/basket');
+    };
+
     return (
         <>
-            <div className={s.orderBlock}>
+            <div className={s.orderBlock} onClick={handleClick}>
                 <span>{language ? 'Ваш заказ' : 'Your order'}</span>
-                <span> {order.length}</span>
-                <span> {sum}</span>
+                <span className={s.sum}> {order.length}</span>
+                <span> {sum}р.</span>
             </div>
         </>
     );

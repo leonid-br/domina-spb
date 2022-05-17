@@ -1,0 +1,19 @@
+.dishes {
+    position: relative;
+    overflow: scroll;
+
+    /* left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    animation: slideIn 0.4s; */
+}
+
+/* @keyframes slideIn {
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+} */

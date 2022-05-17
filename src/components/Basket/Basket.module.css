@@ -1,0 +1,51 @@
+.basket {
+    position: relative;
+    overflow: scroll;
+
+    /* left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    animation: slideIn 0.4s; */
+}
+
+/* @keyframes slideIn {
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+} */
+
+.item {
+    display: flex;
+    padding: 20px;
+}
+
+.description {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    margin-left: 15px;
+}
+
+.description p {
+}
+
+.title {
+    margin-top: 20px;
+    text-align: center;
+    color: var(--color-active);
+}
+
+.img {
+    display: block;
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+}
+
+.info {
+    display: flex;
+}
