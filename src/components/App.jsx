@@ -1,6 +1,11 @@
-import { Route, Routes, useLocation } from 'react-router-dom';
-import { Suspense } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import {
+    Route,
+    Routes,
+    useLocation,
+    useNavigate,
+} from 'react-router-dom';
+import { Suspense, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 
 import Header from './Header';
 import Navigation from './Navigation';
@@ -14,6 +19,13 @@ import s from './App.module.css';
 function App() {
     const { order } = useSelector(getOrder);
     const location = useLocation();
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (order.length === 0) {
+            navigate('/');
+        }
+    }, [navigate, order]);
 
     return (
         <div className={s.app}>
@@ -32,7 +44,7 @@ function App() {
                     <Route path="/basket" element={<Basket />} />
                 </Routes>
             </Suspense>
-            {order && location.pathname !== '/basket' ? (
+            {order.length !== 0 && location.pathname !== '/basket' ? (
                 <Order />
             ) : (
                 ''

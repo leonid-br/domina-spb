@@ -1,14 +1,16 @@
-// import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { useLocation } from 'react-router-dom';
 
 import s from './Header.module.css';
 import logo from './logo.webp';
 import { Switch } from 'react-switch-input';
 import actions from 'redux/language/language-action';
+import { getLanguage } from 'redux/language/language-selectors';
 
 const Header = () => {
-    // const [checked, setChecked] = useState(false);
+    const location = useLocation();
     const dispatch = useDispatch();
+    const { language } = useSelector(getLanguage);
 
     const handleChange = e => {
         dispatch(actions.changeLanguage(!e.target.checked));
@@ -17,9 +19,18 @@ const Header = () => {
     return (
         <header>
             <img src={logo} alt="logo" className={s.logo} />
-            <span>ru</span>
-            <Switch onChange={handleChange} />
-            <span className={s.en}>en</span>
+            {location.pathname === '/basket' ? (
+                ''
+            ) : (
+                <>
+                    <span>ru</span>
+                    <Switch
+                        onChange={handleChange}
+                        language={language}
+                    />
+                    <span className={s.en}>en</span>
+                </>
+            )}
         </header>
     );
 };

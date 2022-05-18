@@ -1,18 +1,22 @@
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
+import Counter from 'components/Counter';
+import getUniqOrder from 'utils/getUniqOrder';
+import getAmmount from 'utils/getAmmountDish';
 import { getLanguage } from 'redux/language/language-selectors';
 import { getOrder } from 'redux/order/order-selectors';
+import actions from 'redux/order/order-actions';
 
 import s from './Basket.module.css';
 import test from 'images/1.jpg';
 
 export default function Basket() {
-    const language = useSelector(getLanguage);
+    const { language } = useSelector(getLanguage);
     const { order } = useSelector(getOrder);
-    console.log('Basket ~ order', order);
+    const dispatch = useDispatch();
 
-    const getAmmount = () => {};
-
+    const getTotalAmmountOrder = () =>
+        order.reduce((acc, cur) => (acc = acc + cur.price), 0);
     return (
         <div className={s.basket}>
             <h3 className={s.title}>
@@ -20,7 +24,7 @@ export default function Basket() {
             </h3>
             <ul>
                 {order &&
-                    order.map((el, idx) => (
+                    getUniqOrder(order, 'id').map((el, idx) => (
                         <li key={el.id} className={s.item}>
                             <div>
                                 <img
@@ -36,14 +40,35 @@ export default function Basket() {
                             <div className={s.description}>
                                 <p className={s.name}>{el.name}</p>
                                 <div className={s.info}>
-                                    <div>count</div>
-                                    <div>ammount</div>
-                                    <div>delete</div>
+                                    <Counter el={el} order={order} />
+                                    <div>
+                                        {getAmmount(el.id, order) *
+                                            el.price}
+                                    </div>
+                                    <div
+                                        onClick={() =>
+                                            dispatch(
+                                                actions.deletePosition(
+                                                    el.id,
+                                                ),
+                                            )
+                                        }
+                                    >
+                                        delete
+                                    </div>
                                 </div>
                             </div>
                         </li>
                     ))}
             </ul>
+            {order.length !== 0 ? (
+                <p>
+                    {language ? 'Сумма заказа' : 'Total ammount'}:
+                    {getTotalAmmountOrder()}
+                </p>
+            ) : (
+                ''
+            )}
         </div>
     );
 }
