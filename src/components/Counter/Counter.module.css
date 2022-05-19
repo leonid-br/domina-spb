@@ -1,0 +1,15 @@
+.counter {
+    display: flex;
+    align-items: center;
+
+    color: gray;
+}
+
+.minus {
+    margin-right: 10px;
+}
+
+.plus {
+    margin-left: 10px;
+    margin-right: 15px;
+}

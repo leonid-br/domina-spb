@@ -1,11 +1,14 @@
 import { useSelector } from 'react-redux';
 
 import data from 'components/Chapter/data';
+
 import Section from 'components/Section';
 import Сhapter from 'components/Chapter/Сhapter';
+
 import { getLanguage } from 'redux/language/language-selectors.js';
 
 import s from './Menu.module.css';
+
 export default function Menu() {
     const { language } = useSelector(getLanguage);
 

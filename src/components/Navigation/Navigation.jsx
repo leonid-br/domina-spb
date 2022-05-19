@@ -1,12 +1,12 @@
 import { useState } from 'react';
-import { NavLink } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
+
 import Slider from 'react-slick';
-import { Link } from 'react-scroll';
 import ScrollToButton from 'components/ScrollToButton';
 
-import s from './Navigation.module.css';
 import { getLanguage } from 'redux/language/language-selectors.js';
+
+import s from './Navigation.module.css';
 
 const Navigation = () => {
     const [activeClass, setActiveClass] = useState('');
@@ -77,156 +77,6 @@ const Navigation = () => {
     return (
         <nav>
             <Slider {...settings}>
-                {/* <div
-                    className={
-                        activeClass === 'breakfast'
-                            ? `${s.item} ${s.activeLink}`
-                            : `${s.item}`
-                    }
-                >
-                    <Link
-                        to="breakfast"
-                        id="breakfast"
-                        containerId="containerElement"
-                        spy={true}
-                        smooth={true}
-                        duration={250}
-                        onClick={getActiveMenu}
-                    >
-                        {language ? 'Завтраки' : 'Breakfast'}
-                    </Link>
-                </div>
-
-                <div
-                    className={
-                        activeClass === 'saladsAndSnacks'
-                            ? `${s.item} ${s.activeLink}`
-                            : `${s.item}`
-                    }
-                    // onClick={getActiveMenu}
-                >
-                    <Link
-                        to="saladsAndSnacks"
-                        id="saladsAndSnacks"
-                        containerId="containerElement"
-                        spy={true}
-                        smooth={true}
-                        duration={250}
-                        onClick={getActiveMenu}
-                    >
-                        {language
-                            ? 'Салаты и закуски'
-                            : 'Salads and Snacks'}
-                    </Link>
-                </div>
-
-                <div
-                    className={
-                        activeClass === 'soups'
-                            ? `${s.item} ${s.activeLink}`
-                            : `${s.item}`
-                    }
-                    // onClick={getActiveMenu}
-                >
-                    <Link
-                        to="soups"
-                        id="soups"
-                        containerId="containerElement"
-                        spy={true}
-                        smooth={true}
-                        duration={250}
-                        onClick={getActiveMenu}
-                    >
-                        {language ? 'Супы' : 'Soups'}
-                    </Link>
-                </div>
-
-                <div
-                    className={
-                        activeClass === 'burgers'
-                            ? `${s.item} ${s.activeLink}`
-                            : `${s.item}`
-                    }
-                    // onClick={getActiveMenu}
-                >
-                    <Link
-                        to="burgers"
-                        id="burgers"
-                        containerId="containerElement"
-                        spy={true}
-                        smooth={true}
-                        duration={250}
-                        onClick={getActiveMenu}
-                    >
-                        {language
-                            ? 'Бургеры и сэндвичи'
-                            : 'Bourgers and Sandwiches'}
-                    </Link>
-                </div>
-
-                <div
-                    className={
-                        activeClass === 'maindishes'
-                            ? `${s.item} ${s.activeLink}`
-                            : `${s.item}`
-                    }
-                    // onClick={getActiveMenu}
-                >
-                    <Link
-                        to="maindishes"
-                        id="maindishes"
-                        containerId="containerElement"
-                        spy={true}
-                        smooth={true}
-                        duration={250}
-                        onClick={getActiveMenu}
-                    >
-                        {language ? 'Горячие блюда' : 'Main Dishes'}
-                    </Link>
-                </div>
-
-                <div
-                    className={
-                        activeClass === 'desserts'
-                            ? `${s.item} ${s.activeLink}`
-                            : `${s.item}`
-                    }
-                    // onClick={getActiveMenu}
-                >
-                    <Link
-                        to="desserts"
-                        id="desserts"
-                        containerId="containerElement"
-                        spy={true}
-                        smooth={true}
-                        duration={250}
-                        onClick={getActiveMenu}
-                    >
-                        {language ? 'Десерты' : 'Desserts'}
-                    </Link>
-                </div>
-
-                <div
-                    className={
-                        activeClass === 'drinks'
-                            ? `${s.item} ${s.activeLink}`
-                            : `${s.item}`
-                    }
-                    onClick={getActiveMenu}
-                >
-                    <Link
-                        to="drinks"
-                        id="drinks"
-                        containerId="containerElement"
-                        spy={true}
-                        smooth={true}
-                        duration={250}
-                        onClick={getActiveMenu}
-                    >
-                        {language ? 'Напитки' : 'Drinks'}
-                    </Link>
-                </div> */}
-
                 <div
                     className={
                         activeClass === 'breakfast'

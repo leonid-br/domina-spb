@@ -1,8 +1,9 @@
 import { useDispatch } from 'react-redux';
 
+import actions from 'redux/order/order-actions';
+
 import test from 'images/1.jpg';
 import s from './Dish.module.css';
-import actions from 'redux/order/order-actions';
 
 export default function Dish({ data }) {
     const dispatch = useDispatch();

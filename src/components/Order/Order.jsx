@@ -3,11 +3,13 @@ import { useSelector } from 'react-redux';
 
 import { getOrder } from 'redux/order/order-selectors';
 import { getLanguage } from 'redux/language/language-selectors';
+
 import s from './Order.module.css';
 
 export default function Order() {
     const { order } = useSelector(getOrder);
     const { language } = useSelector(getLanguage);
+
     const navigate = useNavigate();
 
     const getSumOrder = () =>

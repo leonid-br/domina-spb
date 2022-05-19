@@ -12,12 +12,14 @@ import Navigation from './Navigation';
 import Menu from './Menu';
 import Order from './Order';
 import Basket from './Basket';
+
 import { getOrder } from 'redux/order/order-selectors';
 
 import s from './App.module.css';
 
 function App() {
     const { order } = useSelector(getOrder);
+
     const location = useLocation();
     const navigate = useNavigate();
 
