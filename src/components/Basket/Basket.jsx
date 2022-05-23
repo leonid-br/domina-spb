@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import emailjs from '@emailjs/browser';
 
 import Counter from 'components/Counter';
 import SvgPlus from 'components/Svg/SvgPlus';
@@ -13,9 +14,11 @@ import { getOrder } from 'redux/order/order-selectors';
 
 import s from './Basket.module.css';
 import test from 'images/1.jpg';
+import api from '../../keys.js';
 
 export default function Basket() {
     const [roomNumber, setRoomNumber] = useState('');
+    const form = useRef();
 
     const { language } = useSelector(getLanguage);
     const { order } = useSelector(getOrder);
@@ -29,12 +32,44 @@ export default function Basket() {
         setRoomNumber(e.target.value);
     };
 
+    const getOrderSend = order => {
+        // console.log(order);
+        // let sendOrder = {};
+        const sendOrder = order.reduce(
+            (acc, el, idx) =>
+                // acc[idx + 1] = el.name;
+                // return acc;
+                (acc = [...acc, idx + 1, el.name]),
+            [],
+        );
+        console.log(sendOrder);
+        return sendOrder;
+        // return JSON.stringify(sendOrder);
+    };
+
+    getOrderSend(order);
+
     const handleSubmit = e => {
         e.preventDefault();
-        console.log('roomNumber:', roomNumber);
-        console.log('order:', order);
-        dispatch(actions.clearOrder());
-        setRoomNumber('');
+
+        emailjs
+            .sendForm(
+                api.SERVICE_ID,
+                api.TEMPLATE_ID,
+                form.current,
+                api.PUBLIC_KEY,
+            )
+            .then(
+                result => {
+                    console.log(form.current);
+                },
+                error => {
+                    console.log(error.text);
+                },
+            );
+
+        // dispatch(actions.clearOrder());
+        // setRoomNumber('');
     };
 
     return order.length !== 0 ? (
@@ -42,6 +77,7 @@ export default function Basket() {
             <h3 className={s.title}>
                 {language ? 'Ваш заказ' : 'Your order'}
             </h3>
+
             <ul className={s.list}>
                 {order &&
                     getUniqOrder(order, 'id').map((el, idx) => (
@@ -97,7 +133,11 @@ export default function Basket() {
             </p>
 
             {/* Форма отправки */}
-            <form className={s.form} onSubmit={handleSubmit}>
+            <form
+                className={s.form}
+                onSubmit={handleSubmit}
+                ref={form}
+            >
                 <label htmlFor="roomNumber" className={s.label}>
                     {language ? 'Номер комнаты:' : 'Room number:'}
                     <input
@@ -111,6 +151,11 @@ export default function Basket() {
                         required
                     />
                 </label>
+                <input
+                    name="order"
+                    value={getOrderSend(order)}
+                    type="hidden"
+                />
                 <button
                     type="submit"
                     className={s.btn}
