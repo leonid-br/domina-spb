@@ -1,6 +1,7 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useMemo } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import emailjs from '@emailjs/browser';
+// import regexp from 'regexp';
 
 import Counter from 'components/Counter';
 import SvgPlus from 'components/Svg/SvgPlus';
@@ -25,29 +26,17 @@ export default function Basket() {
 
     const dispatch = useDispatch();
 
-    const getTotalAmmountOrder = () =>
+    const getTotalAmmountOrder = order =>
         order.reduce((acc, cur) => (acc = acc + cur.price), 0);
 
+    const calculatedTotalAmmountOrder = useMemo(() => {
+        return getTotalAmmountOrder(order);
+    }, [order]);
+
     const handleChange = e => {
+        // const regexp = '/(2[0-1][1-8])/gm';
         setRoomNumber(e.target.value);
     };
-
-    const getOrderSend = order => {
-        // console.log(order);
-        // let sendOrder = {};
-        const sendOrder = order.reduce(
-            (acc, el, idx) =>
-                // acc[idx + 1] = el.name;
-                // return acc;
-                (acc = [...acc, idx + 1, el.name]),
-            [],
-        );
-        console.log(sendOrder);
-        return sendOrder;
-        // return JSON.stringify(sendOrder);
-    };
-
-    getOrderSend(order);
 
     const handleSubmit = e => {
         e.preventDefault();
@@ -77,67 +66,79 @@ export default function Basket() {
             <h3 className={s.title}>
                 {language ? 'Ваш заказ' : 'Your order'}
             </h3>
-
-            <ul className={s.list}>
-                {order &&
-                    getUniqOrder(order, 'id').map((el, idx) => (
-                        <li key={el.id} className={s.item}>
-                            {/* Фото блюда */}
-                            <div>
-                                <img
-                                    src={
-                                        ''
-                                            ? `https://image.tmdb.org/t/p/w500`
-                                            : `${test}`
-                                    }
-                                    alt={el.name}
-                                    className={s.img}
-                                />
-                            </div>
-                            <div className={s.description}>
-                                <p className={s.name}>{el.name}</p>
-                                <div className={s.info}>
-                                    {/* Счетчик количества блюда */}
-                                    <Counter el={el} order={order} />
-
-                                    {/* Сумма за блюдо */}
-                                    <div>
-                                        {getAmmount(el.id, order) *
-                                            el.price}
-                                        р.
-                                    </div>
-
-                                    {/* Удаление блюда */}
-                                    <div
-                                        onClick={() =>
-                                            dispatch(
-                                                actions.deletePosition(
-                                                    el.id,
-                                                ),
-                                            )
-                                        }
-                                        className={s.delete}
-                                    >
-                                        <SvgPlus />
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                    ))}
-            </ul>
-
-            {/* Сумма заказа */}
-            <p className={s.totalAmmount}>
-                {language ? 'Сумма заказа' : 'Total ammount'}:{' '}
-                {getTotalAmmountOrder()}p.
-            </p>
-
-            {/* Форма отправки */}
             <form
                 className={s.form}
                 onSubmit={handleSubmit}
                 ref={form}
             >
+                <ul className={s.list}>
+                    {order &&
+                        getUniqOrder(order, 'id').map((el, idx) => (
+                            <li key={el.id} className={s.item}>
+                                {/* Фото блюда */}
+                                <div>
+                                    <img
+                                        src={
+                                            ''
+                                                ? `https://image.tmdb.org/t/p/w500`
+                                                : `${test}`
+                                        }
+                                        alt={el.name}
+                                        className={s.img}
+                                    />
+                                </div>
+                                <div className={s.description}>
+                                    <p className={s.name}>
+                                        {el.name}
+                                    </p>
+                                    <div className={s.info}>
+                                        {/* Счетчик количества блюда */}
+                                        <Counter
+                                            el={el}
+                                            order={order}
+                                        />
+
+                                        {/* Сумма за блюдо */}
+                                        <div>
+                                            {getAmmount(
+                                                el.id,
+                                                order,
+                                            ) * el.price}
+                                            р.
+                                        </div>
+
+                                        {/* Удаление блюда */}
+                                        <div
+                                            onClick={() =>
+                                                dispatch(
+                                                    actions.deletePosition(
+                                                        el.id,
+                                                    ),
+                                                )
+                                            }
+                                            className={s.delete}
+                                        >
+                                            <SvgPlus />
+                                        </div>
+                                    </div>
+                                </div>
+                                <input
+                                    type="hidden"
+                                    value={`${el.name} - 1`}
+                                    name={idx}
+                                />
+                            </li>
+                        ))}
+                </ul>
+
+                {/* Сумма заказа */}
+                <p className={s.totalAmmount}>
+                    {language ? 'Сумма заказа' : 'Total ammount'}:{' '}
+                    {calculatedTotalAmmountOrder}p.
+                </p>
+
+                {/* Форма отправки */}
+
                 <label htmlFor="roomNumber" className={s.label}>
                     {language ? 'Номер комнаты:' : 'Room number:'}
                     <input
@@ -149,13 +150,10 @@ export default function Basket() {
                         min={100}
                         max={800}
                         required
+                        pattern="/(2[0-1][1-8])/gm"
                     />
                 </label>
-                <input
-                    name="order"
-                    value={getOrderSend(order)}
-                    type="hidden"
-                />
+
                 <button
                     type="submit"
                     className={s.btn}
