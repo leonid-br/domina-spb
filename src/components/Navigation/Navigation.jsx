@@ -59,9 +59,9 @@ const Navigation = () => {
     const settings = {
         // className: 'slider variable-width',
         dots: false,
-        infinite: true,
+        infinite: false,
         centerMode: false,
-        slidesToShow: 1,
+        slidesToShow: 2,
         slidesToScroll: 1,
         swipeToSlide: true,
         variableWidth: true,
@@ -71,7 +71,6 @@ const Navigation = () => {
 
     const getActiveMenu = id => {
         setActiveClass(id);
-        console.log('Navigation ~ e.target.id', id);
     };
 
     return (
@@ -132,7 +131,7 @@ const Navigation = () => {
                     <ScrollToButton toId="burgers">
                         {language
                             ? 'Бургеры и сэндвичи'
-                            : 'Bourgers and Sandwiches'}
+                            : 'Burgers and Sandwiches'}
                     </ScrollToButton>
                 </div>
 

@@ -3,6 +3,7 @@
 @import '/node_modules/lato-font/css/lato-font.css';
 @import '~slick-carousel/slick/slick.css';
 @import '~slick-carousel/slick/slick-theme.css';
+@import 'react-toastify/dist/ReactToastify.css';
 
 body {
     margin: 0;

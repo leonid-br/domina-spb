@@ -418,7 +418,7 @@ const data = {
                 description: '',
             },
         ],
-        'Bourgers and Sandwiches': [
+        'Burgers and Sandwiches': [
             {
                 id: 11,
                 name: 'Cayenne burger ',

@@ -12,6 +12,7 @@ import Navigation from './Navigation';
 import Menu from './Menu';
 import Order from './Order';
 import Basket from './Basket';
+import ScrollToTop from 'utils/ScrollToTop';
 
 import { getOrder } from 'redux/order/order-selectors';
 
@@ -41,10 +42,12 @@ function App() {
             </div>
 
             <Suspense fallback={<h2>Loading...</h2>}>
-                <Routes>
-                    <Route path="/" element={<Menu />} />
-                    <Route path="/basket" element={<Basket />} />
-                </Routes>
+                <ScrollToTop>
+                    <Routes>
+                        <Route path="/" element={<Menu />} />
+                        <Route path="/basket" element={<Basket />} />
+                    </Routes>
+                </ScrollToTop>
             </Suspense>
             {order.length !== 0 && location.pathname !== '/basket' ? (
                 <Order />
