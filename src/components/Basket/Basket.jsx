@@ -8,7 +8,6 @@ import Counter from 'components/Counter';
 import SvgPlus from 'components/Svg/SvgPlus';
 
 import getUniqOrder from 'utils/getUniqOrder';
-import getAmmount from 'utils/getAmmountDish';
 import actions from 'redux/order/order-actions';
 
 import { getLanguage } from 'redux/language/language-selectors';
@@ -51,7 +50,7 @@ export default function Basket() {
 
     const handleSubmit = e => {
         e.preventDefault();
-        const reg = /([2-7][0-2][0-9])/gm;
+        const reg = /\b([2-7][0-2][0-9])\b/gm;
 
         if (!reg.test(roomNumber)) {
             return toast.warn(
@@ -128,10 +127,7 @@ export default function Basket() {
 
                                         {/* Сумма за блюдо */}
                                         <div>
-                                            {getAmmount(
-                                                el.id,
-                                                order,
-                                            ) * el.price}
+                                            {el.ammount * el.price}
                                             р.
                                         </div>
 
@@ -152,7 +148,7 @@ export default function Basket() {
                                 </div>
                                 <input
                                     type="hidden"
-                                    value={`${el.name} - 1`}
+                                    value={`${el.name} - ${el.ammount}`}
                                     name={idx}
                                 />
                             </li>
@@ -176,9 +172,8 @@ export default function Basket() {
                         className={s.input}
                         onChange={handleChange}
                         // min={100}
-                        // max={800}
+                        // max={718}
                         required
-                        pattern="/(2[0-1][1-8])/gm"
                     />
                 </label>
                 <span className={s.commentSpan}>
