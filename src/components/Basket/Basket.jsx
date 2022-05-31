@@ -29,7 +29,10 @@ export default function Basket() {
     const dispatch = useDispatch();
 
     const getTotalAmmountOrder = order =>
-        order.reduce((acc, cur) => (acc = acc + cur.price), 0);
+        order.reduce(
+            (acc, cur) => (acc = acc + cur.price * cur.ammount),
+            0,
+        );
 
     const calculatedTotalAmmountOrder = useMemo(() => {
         return getTotalAmmountOrder(order);

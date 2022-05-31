@@ -21,6 +21,7 @@ export default function Menu() {
                               title={dataSection}
                               data={data.ru[dataSection]}
                               breakfast={data.name[idx]}
+                              drinks={data.name[idx]}
                           />
                       </Section>
                   ))
@@ -30,6 +31,7 @@ export default function Menu() {
                               title={dataSection}
                               data={data.en[dataSection]}
                               breakfast={data.name[idx]}
+                              drinks={data.name[idx]}
                           />
                       </Section>
                   ))}

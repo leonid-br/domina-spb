@@ -103,7 +103,7 @@ const Navigation = () => {
                     <ScrollToButton toId="saladsAndSnacks">
                         {language
                             ? 'Салаты и закуски'
-                            : 'Salads and Snacks'}{' '}
+                            : 'Salads and Snacks'}
                     </ScrollToButton>
                 </div>
 
@@ -116,7 +116,7 @@ const Navigation = () => {
                     onClick={() => getActiveMenu('soups')}
                 >
                     <ScrollToButton toId="soups">
-                        {language ? 'Супы' : 'Soups'}{' '}
+                        {language ? 'Супы' : 'Soups'}
                     </ScrollToButton>
                 </div>
 

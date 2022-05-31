@@ -7,7 +7,7 @@ import actions from 'redux/order/order-actions';
 
 import s from './Counter.module.css';
 
-export default function Counter({ el, order }) {
+export default function Counter({ el }) {
     const dispatch = useDispatch();
 
     return (
@@ -18,7 +18,7 @@ export default function Counter({ el, order }) {
             >
                 <SvgMinus />
             </span>
-            {el.ammount}
+            <span> {el.ammount}</span>
             <span
                 onClick={() => dispatch(actions.addDish(el))}
                 className={s.plus}
