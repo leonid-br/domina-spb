@@ -9,14 +9,15 @@
 
 .item a {
     padding: 2px;
-    color: white;
-
     outline: none;
+
+    color: white;
 }
 
 .activeLink a {
-    color: var(--color-active);
     border-top: 1px solid var(--color-active);
     border-bottom: 1px solid var(--color-active);
     outline: none;
+
+    color: var(--color-active);
 }

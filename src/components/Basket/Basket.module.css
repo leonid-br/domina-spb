@@ -130,6 +130,10 @@
     color: white;
 }
 
+.btn:disabled {
+    background-color: lightgray;
+}
+
 .commentSpan {
     margin-left: 20px;
     margin-top: 20px;
@@ -166,33 +170,4 @@
 
 .iconTel {
     margin-left: 5px;
-}
-
-.overlay {
-    position: absolute;
-    top: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-    width: 100%;
-    height: 100%;
-}
-
-.overlayConent {
-    position: fixed;
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    background-color: #fff;
-    border-radius: 10px;
-    width: 60%;
-    padding: 10px;
-
-    top: 50%;
-    left: 50%;
-    margin-right: -50%;
-    transform: translate(-50%, -50%);
-}
-
-.text {
-    margin-top: 10px;
-    font-size: 16px;
 }

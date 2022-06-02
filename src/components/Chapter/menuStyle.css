@@ -48,6 +48,7 @@ input#switch + label {
 }
 
 .breakfast {
+    margin-top: 2px;
     font-style: italic;
     font-size: 9px;
     text-align: center;

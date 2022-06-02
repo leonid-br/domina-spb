@@ -8,15 +8,15 @@ import { getOrder } from 'redux/order/order-selectors';
 import test from 'images/1.jpg';
 import s from './Dish.module.css';
 
-export default function Dish({ data, id }) {
+export default function Dish({ data, flag }) {
     const dispatch = useDispatch();
     const { order } = useSelector(getOrder);
-    // console.log('id:', id);
+
     const checedDish = order.find(el => el.id === data.id);
     return (
         <>
             <div className={s.item}>
-                {id === 'drinks' ? (
+                {flag === 'drinks' ? (
                     ''
                 ) : (
                     <img

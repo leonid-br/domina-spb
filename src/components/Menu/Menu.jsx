@@ -20,8 +20,7 @@ export default function Menu() {
                           <Сhapter
                               title={dataSection}
                               data={data.ru[dataSection]}
-                              breakfast={data.name[idx]}
-                              drinks={data.name[idx]}
+                              flag={data.name[idx]}
                           />
                       </Section>
                   ))
@@ -30,8 +29,7 @@ export default function Menu() {
                           <Сhapter
                               title={dataSection}
                               data={data.en[dataSection]}
-                              breakfast={data.name[idx]}
-                              drinks={data.name[idx]}
+                              flag={data.name[idx]}
                           />
                       </Section>
                   ))}

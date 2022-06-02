@@ -57,7 +57,6 @@ const Navigation = () => {
     }
 
     const settings = {
-        // className: 'slider variable-width',
         dots: false,
         infinite: false,
         centerMode: false,

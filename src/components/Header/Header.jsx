@@ -15,7 +15,6 @@ const Header = () => {
     const navigate = useNavigate();
 
     const dispatch = useDispatch();
-
     const { language } = useSelector(getLanguage);
 
     const handleChange = e => {

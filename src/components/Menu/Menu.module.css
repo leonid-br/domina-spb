@@ -1,6 +1,8 @@
 .dishes {
     position: relative;
     overflow: scroll;
+
+    padding-top: 15px;
     padding-bottom: 60px;
 
     /* left: 0;

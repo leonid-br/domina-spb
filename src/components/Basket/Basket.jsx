@@ -2,12 +2,11 @@ import { useState, useRef, useMemo } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import emailjs from '@emailjs/browser';
 import { ToastContainer, toast } from 'react-toastify';
-// import regexp from 'regexp';
 
 import Counter from 'components/Counter';
 import SvgPlus from 'components/Svg/SvgPlus';
+import Modal from 'components/Modal';
 
-import getUniqOrder from 'utils/getUniqOrder';
 import actions from 'redux/order/order-actions';
 
 import { getLanguage } from 'redux/language/language-selectors';
@@ -21,6 +20,7 @@ export default function Basket() {
     const [roomNumber, setRoomNumber] = useState('');
     const [comment, setComment] = useState('');
     const [modal, setModal] = useState(false);
+
     const form = useRef();
 
     const { language } = useSelector(getLanguage);
@@ -58,7 +58,7 @@ export default function Basket() {
         if (!reg.test(roomNumber)) {
             return toast.warn(
                 language
-                    ? 'Введён не коррекнтый номер комнаты'
+                    ? 'Введён некоррекнтый номер комнаты'
                     : 'Invalid room number entered',
                 {
                     position: 'top-center',
@@ -103,7 +103,7 @@ export default function Basket() {
             >
                 <ul className={s.list}>
                     {order &&
-                        getUniqOrder(order, 'id').map((el, idx) => (
+                        order.map((el, idx) => (
                             <li key={el.id} className={s.item}>
                                 {/* Фото блюда */}
                                 <div>
@@ -165,7 +165,6 @@ export default function Basket() {
                 </p>
 
                 {/* Форма отправки */}
-
                 <label htmlFor="roomNumber" className={s.label}>
                     {language ? 'Номер комнаты:' : 'Room number:'}
                     <input
@@ -174,8 +173,6 @@ export default function Basket() {
                         value={roomNumber}
                         className={s.input}
                         onChange={handleChange}
-                        // min={100}
-                        // max={718}
                         required
                     />
                 </label>
@@ -232,22 +229,7 @@ export default function Basket() {
                 theme="colored"
             />
             {modal ? (
-                <div className={s.overlay}>
-                    <div className={s.overlayConent}>
-                        <p className={s.text}>
-                            {language
-                                ? 'Благодарим за заказ. В ближайшие 5 минут мы перезвоним Вам для его подтверждения.'
-                                : 'Thank you for your order. In the next 5 minutes we will call you back to confirm it.'}
-                        </p>
-                        <button
-                            type="button"
-                            className={s.btn}
-                            onClick={handleClick}
-                        >
-                            Ok
-                        </button>
-                    </div>
-                </div>
+                <Modal language={language} onClick={handleClick} />
             ) : (
                 ''
             )}
