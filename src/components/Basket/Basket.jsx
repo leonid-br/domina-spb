@@ -50,7 +50,7 @@ export default function Basket() {
         setRoomNumber('');
         setComment('');
     };
-
+    console.log('test21');
     const handleSubmit = e => {
         e.preventDefault();
         const reg = /\b([2-7][0-2][0-9])\b/gm;

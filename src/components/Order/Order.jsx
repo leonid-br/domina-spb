@@ -28,7 +28,7 @@ export default function Order() {
     const handleClick = () => {
         navigate('/basket');
     };
-
+    console.log('test');
     return (
         <>
             <div className={s.orderBlock} onClick={handleClick}>
