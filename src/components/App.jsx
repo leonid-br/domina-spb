@@ -1,10 +1,5 @@
-import {
-    Route,
-    Routes,
-    useLocation,
-    useNavigate,
-} from 'react-router-dom';
-import { Suspense, useEffect } from 'react';
+import { Route, Routes, useLocation } from 'react-router-dom';
+import { Suspense } from 'react';
 import { useSelector } from 'react-redux';
 
 import Header from './Header';
@@ -22,13 +17,6 @@ function App() {
     const { order } = useSelector(getOrder);
 
     const location = useLocation();
-    const navigate = useNavigate();
-
-    useEffect(() => {
-        if (order.length === 0) {
-            navigate('/');
-        }
-    }, [navigate, order]);
 
     return (
         <div className={s.app}>

@@ -1,10 +1,14 @@
+.nav {
+    padding: 7px 5px 7px 0;
+}
+
 .item {
     outline: none;
 
     width: 100%;
     margin: 10px;
 
-    font-size: 14px;
+    font-size: 17px;
 }
 
 .item a {

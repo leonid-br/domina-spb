@@ -13,13 +13,11 @@ const Navigation = () => {
     const { language } = useSelector(getLanguage);
 
     function SampleNextArrow(props) {
-        const { className, style, onClick } = props;
+        const { onClick } = props;
 
         return (
             <div
-                className={className}
                 style={{
-                    ...style,
                     width: '8px',
                     height: '8px',
                     borderTop: '2px solid #c5a46d',
@@ -35,19 +33,17 @@ const Navigation = () => {
     }
 
     function SamplePrevArrow(props) {
-        const { className, style, onClick } = props;
+        const { onClick } = props;
         return (
             <div
-                className={className}
                 style={{
-                    ...style,
-
                     width: '8px',
                     height: '8px',
                     borderTop: '2px solid #c5a46d',
                     borderRight: '2px solid #c5a46d',
                     transform: 'rotate(-135deg) translate(0, -50%)',
                     position: 'absolute',
+
                     top: '25%',
                     left: '-10px',
                 }}
@@ -73,7 +69,7 @@ const Navigation = () => {
     };
 
     return (
-        <nav>
+        <nav className={s.nav}>
             <Slider {...settings}>
                 <div
                     className={

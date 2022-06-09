@@ -1,5 +1,6 @@
-import { useState, useRef, useMemo } from 'react';
+import { useState, useRef, useMemo, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import emailjs from '@emailjs/browser';
 import { ToastContainer, toast } from 'react-toastify';
 
@@ -27,6 +28,13 @@ export default function Basket() {
     const { order } = useSelector(getOrder);
 
     const dispatch = useDispatch();
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (order.length === 0) {
+            navigate('/');
+        }
+    }, [navigate, order]);
 
     const getTotalAmmountOrder = order =>
         order.reduce(
@@ -107,11 +115,7 @@ export default function Basket() {
                                 {/* Фото блюда */}
                                 <div>
                                     <img
-                                        src={
-                                            ''
-                                                ? `https://image.tmdb.org/t/p/w500`
-                                                : `${test}`
-                                        }
+                                        src={test}
                                         alt={el.name}
                                         className={s.img}
                                     />
