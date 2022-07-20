@@ -97,7 +97,9 @@ export default function Basket() {
             );
         setModal(true);
     };
-
+    const addDefaultSrc = e => {
+        e.target.src = test;
+    };
     return order.length !== 0 ? (
         <div className={s.basket}>
             <h3 className={s.title}>
@@ -115,7 +117,8 @@ export default function Basket() {
                                 {/* Фото блюда */}
                                 <div>
                                     <img
-                                        src={test}
+                                        onError={addDefaultSrc}
+                                        src={`images/${el.id}.jpg`}
                                         alt={el.name}
                                         className={s.img}
                                     />

@@ -15,31 +15,31 @@ const data = {
             {
                 id: 28,
                 name: 'Яичница – глазунья с добавками на выбор',
-                price: 320,
+                price: 390,
                 description: 'лук, бекон, грибы, сыр, томаты, зелень',
             },
             {
                 id: 29,
                 name: 'Омлет с добавками на выбор',
-                price: 350,
+                price: 390,
                 description: 'лук, бекон, грибы, сыр, томаты, зелень',
             },
             {
                 id: 30,
                 name: 'Яйца бенедикт с беконом и голландским соусом',
-                price: 390,
+                price: 460,
                 description: '',
             },
             {
                 id: 31,
                 name: 'Яйца роял с лососем, шпинатом и голландским соусом',
-                price: 490,
+                price: 520,
                 description: '',
             },
             {
                 id: 32,
                 name: 'Оладьи из цуккини с лососем и рикоттой',
-                price: 490,
+                price: 510,
                 description: '',
             },
             {
@@ -50,29 +50,42 @@ const data = {
             },
             {
                 id: 34,
-                name: 'Асаи боул',
+                name: 'Тапиока боул',
                 price: 350,
                 description: '',
             },
             {
                 id: 35,
                 name: 'Блинчики по-русски',
-                price: 300,
+                price: 350,
                 description:
                     'подаются со сметаной и домашним вареньем',
             },
             {
                 id: 36,
-                name: 'Хрустящие бельгийские вафли',
-                price: 330,
+                name: 'Панкейки с ванильным кремом и клубникой',
+                price: 420,
                 description: '',
             },
             {
                 id: 37,
                 name: 'Сырники с сезонными ягодами и сметаной',
-                price: 350,
+                price: 440,
                 description: '',
             },
+            {
+                id: 82,
+                name: 'Тост с авокадо, томатами конкассе и жареным яйцом',
+                price: 460,
+                description: '',
+            },
+            {
+                id: 83,
+                name: 'Французский тост с ветчиной и сыром',
+                price: 390,
+                description: '',
+            },
+
             {
                 id: 38,
                 name: 'Красная икра с блинами',
@@ -240,7 +253,7 @@ const data = {
             {
                 id: 25,
                 name: 'Домашнее мороженое и сорбеты',
-                price: 650,
+                price: 100,
                 description: '',
             },
         ],
@@ -530,33 +543,33 @@ const data = {
             {
                 id: 28,
                 name: 'Fried eggs with toppings of your choice',
-                price: 320,
+                price: 390,
                 description:
                     'onion, bacon, mushrooms, cheese, tomatoes, greens',
             },
             {
                 id: 29,
                 name: 'Omelet with toppings of your choice',
-                price: 350,
+                price: 390,
                 description:
                     'onion, bacon, mushrooms, cheese, tomatoes, greens',
             },
             {
                 id: 30,
                 name: 'Eggs Benedict with bacon and Hollandaise sauce',
-                price: 390,
+                price: 460,
                 description: '',
             },
             {
                 id: 31,
                 name: 'Royal eggs with salmon, spinach and Hollandaise sauce',
-                price: 490,
+                price: 520,
                 description: '',
             },
             {
                 id: 32,
                 name: 'Zucchini pancakes with salmon and ricotta',
-                price: 490,
+                price: 510,
                 description: '',
             },
             {
@@ -567,28 +580,41 @@ const data = {
             },
             {
                 id: 34,
-                name: 'Acai bowl',
+                name: 'Tapioca bowl',
                 price: 350,
                 description: '',
             },
             {
                 id: 35,
                 name: 'Russian style pancakes',
-                price: 300,
+                price: 350,
                 description: 'served with jam and sour cream',
             },
             {
                 id: 36,
-                name: 'Crispy Belgian waffles',
-                price: 330,
+                name: 'Pancakes with vanilla cream and strawberries',
+                price: 420,
                 description: '',
             },
             {
                 id: 37,
                 name: 'Cottage cheese pancakes with seasonal berries and sour cream',
-                price: 350,
+                price: 440,
                 description: '',
             },
+            {
+                id: 82,
+                name: 'Avocado toast, concasse tomatoes and fried egg',
+                price: 460,
+                description: '',
+            },
+            {
+                id: 83,
+                name: 'French toast with ham and cheese',
+                price: 390,
+                description: '',
+            },
+
             {
                 id: 38,
                 name: 'Salmon caviar with with russian pancakes',
@@ -756,7 +782,7 @@ const data = {
             {
                 id: 25,
                 name: 'Homemade ice-cream and sorbet',
-                price: 650,
+                price: 100,
                 description: '',
             },
         ],

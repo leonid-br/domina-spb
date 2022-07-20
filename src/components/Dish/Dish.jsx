@@ -12,7 +12,11 @@ export default function Dish({ data, flag }) {
     const dispatch = useDispatch();
     const { order } = useSelector(getOrder);
 
-    const checedDish = order.find(el => el.id === data.id);
+    const checkedDish = order.find(el => el.id === data.id);
+    const addDefaultSrc = e => {
+        e.target.src = test;
+    };
+
     return (
         <>
             <div className={s.item}>
@@ -20,11 +24,8 @@ export default function Dish({ data, flag }) {
                     ''
                 ) : (
                     <img
-                        src={
-                            ''
-                                ? `https://image.tmdb.org/t/p/w500`
-                                : `${test}`
-                        }
+                        onError={addDefaultSrc}
+                        src={`images/${data.id}.jpg`}
                         alt={data.name}
                         className={s.img}
                     />
@@ -39,8 +40,8 @@ export default function Dish({ data, flag }) {
 
                     <div className={s.box}>
                         <p className={s.price}>{data.price} p.</p>
-                        {checedDish ? (
-                            <Counter el={checedDish} />
+                        {checkedDish ? (
+                            <Counter el={checkedDish} />
                         ) : (
                             <button
                                 type="button"
