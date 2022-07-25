@@ -52,16 +52,6 @@
     color: var(--color-active);
 }
 
-.addDish {
-    outline: none;
-    border: none;
-
-    padding: 2px 9px;
-    border-radius: 105px;
-
-    font-weight: 500;
-    font-size: 20px;
-
-    color: var(--color-active);
-    background-color: #f8f8f8;
+.plus {
+    margin-top: 2px;
 }

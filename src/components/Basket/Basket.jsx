@@ -100,6 +100,18 @@ export default function Basket() {
     const addDefaultSrc = e => {
         e.target.src = test;
     };
+
+    const getRenderOrderObj = order => {
+        const arr = [];
+        order?.forEach(el => {
+            el?.flag ? arr.unshift(el) : arr.push(el);
+        });
+
+        return arr.reverse();
+    };
+
+    const renderList = getRenderOrderObj(order);
+
     return order.length !== 0 ? (
         <div className={s.basket}>
             <h3 className={s.title}>
@@ -111,17 +123,21 @@ export default function Basket() {
                 ref={form}
             >
                 <ul className={s.list}>
-                    {order &&
-                        order.map((el, idx) => (
+                    {renderList &&
+                        renderList.map((el, idx) => (
                             <li key={el.id} className={s.item}>
                                 {/* Фото блюда */}
                                 <div>
-                                    <img
-                                        onError={addDefaultSrc}
-                                        src={`images/${el.id}.jpg`}
-                                        alt={el.name}
-                                        className={s.img}
-                                    />
+                                    {el.flag === 'bev' ? (
+                                        ''
+                                    ) : (
+                                        <img
+                                            onError={addDefaultSrc}
+                                            src={`images/${el.id}.jpg`}
+                                            alt={el.name}
+                                            className={s.img}
+                                        />
+                                    )}
                                 </div>
                                 <div className={s.description}>
                                     <p className={s.name}>
@@ -135,7 +151,7 @@ export default function Basket() {
                                         />
 
                                         {/* Сумма за блюдо */}
-                                        <div>
+                                        <div className={s.price}>
                                             {el.ammount * el.price}
                                             р.
                                         </div>

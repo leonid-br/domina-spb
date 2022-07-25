@@ -24,7 +24,6 @@ export default function Order() {
         (acc, cur) => acc + cur.ammount,
         0,
     );
-    console.log('test');
     const handleClick = () => {
         navigate('/basket');
     };

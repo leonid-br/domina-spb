@@ -4,6 +4,7 @@ import Counter from 'components/Counter';
 
 import actions from 'redux/order/order-actions';
 import { getOrder } from 'redux/order/order-selectors';
+import SvgPlus from 'components/Svg/SvgPlus';
 
 import test from 'images/1.jpg';
 import s from './Dish.module.css';
@@ -43,15 +44,14 @@ export default function Dish({ data, flag }) {
                         {checkedDish ? (
                             <Counter el={checkedDish} />
                         ) : (
-                            <button
-                                type="button"
-                                className={s.addDish}
+                            <span
+                                className={s.plus}
                                 onClick={() =>
                                     dispatch(actions.addDish(data))
                                 }
                             >
-                                +
-                            </button>
+                                <SvgPlus />
+                            </span>
                         )}
                     </div>
                 </div>

@@ -6,7 +6,7 @@ import actions from 'redux/language/language-action';
 import { Switch } from 'react-switch-input';
 import { getLanguage } from 'redux/language/language-selectors';
 
-import logo from './logo.webp';
+import logo from './logo.jpg';
 
 import s from './Header.module.css';
 
@@ -33,6 +33,7 @@ const Header = () => {
                 className={s.logo}
                 onClick={handleClick}
             />
+
             {location.pathname === '/basket' ? (
                 <svg
                     width="20"
