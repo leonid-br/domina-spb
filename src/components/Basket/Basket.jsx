@@ -215,7 +215,7 @@ export default function Basket() {
                             ? 'Связаться с сотрудником ресторанной службы'
                             : 'Contact a restaurant employee'}
                     </span>
-                    <a href="tel:+79215924792">
+                    <a href="tel:+78123851292">
                         <svg
                             viewBox="0 0 24 24"
                             width="24"
