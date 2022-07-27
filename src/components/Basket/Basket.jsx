@@ -16,6 +16,7 @@ import { getOrder } from 'redux/order/order-selectors';
 import s from './Basket.module.css';
 import test from 'images/1.jpg';
 import api from '../../keys.js';
+import numbers from '../Order/roomsNumber';
 
 export default function Basket() {
     const [roomNumber, setRoomNumber] = useState('');
@@ -60,9 +61,7 @@ export default function Basket() {
     };
     const handleSubmit = e => {
         e.preventDefault();
-        const reg = /\b([2-7][0-2][0-9])\b/gm;
-
-        if (!reg.test(roomNumber)) {
+        if (!numbers.find(el => el === Number(roomNumber))) {
             return toast.warn(
                 language
                     ? 'Введён некоррекнтый номер комнаты'
@@ -79,6 +78,24 @@ export default function Basket() {
                 },
             );
         }
+        // const reg = /\b([2-7][0-2][0-9])\b/gm;
+        // if (!reg.test(roomNumber)) {
+        //     return toast.warn(
+        //         language
+        //             ? 'Введён некоррекнтый номер комнаты'
+        //             : 'Invalid room number entered',
+        //         {
+        //             position: 'top-center',
+        //             autoClose: 2500,
+        //             hideProgressBar: false,
+        //             closeOnClick: true,
+        //             pauseOnHover: true,
+        //             draggable: true,
+        //             progress: undefined,
+        //             theme: 'colored',
+        //         },
+        //     );
+        // }
 
         emailjs
             .sendForm(
@@ -153,7 +170,9 @@ export default function Basket() {
                                         {/* Сумма за блюдо */}
                                         <div className={s.price}>
                                             {el.ammount * el.price}
-                                            р.
+                                            {language
+                                                ? ' р.'
+                                                : ' rub'}
                                         </div>
 
                                         {/* Удаление блюда */}
@@ -183,21 +202,30 @@ export default function Basket() {
                 {/* Сумма заказа */}
                 <p className={s.totalAmmount}>
                     {language ? 'Сумма заказа' : 'Total ammount'}:{' '}
-                    {calculatedTotalAmmountOrder}p.
+                    {calculatedTotalAmmountOrder}
+                    {language ? ' р.' : ' rub'}
                 </p>
 
                 {/* Форма отправки */}
                 <label htmlFor="roomNumber" className={s.label}>
                     {language ? 'Номер комнаты:' : 'Room number:'}
+
                     <input
                         name="roomNumber"
                         type="number"
                         value={roomNumber}
+                        list="numbers"
                         className={s.input}
                         onChange={handleChange}
                         required
                     />
+                    {/* <datalist id="numbers">
+                        {numbers.map((item, key) => (
+                            <option key={key} value={item} />
+                        ))}
+                    </datalist> */}
                 </label>
+
                 <span className={s.commentSpan}>
                     {language
                         ? 'Комментарий к заказу'

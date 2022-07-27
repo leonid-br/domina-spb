@@ -4,6 +4,8 @@ import Counter from 'components/Counter';
 
 import actions from 'redux/order/order-actions';
 import { getOrder } from 'redux/order/order-selectors';
+import { getLanguage } from 'redux/language/language-selectors';
+
 import SvgPlus from 'components/Svg/SvgPlus';
 
 import test from 'images/1.jpg';
@@ -11,7 +13,9 @@ import s from './Dish.module.css';
 
 export default function Dish({ data, flag }) {
     const dispatch = useDispatch();
+
     const { order } = useSelector(getOrder);
+    const { language } = useSelector(getLanguage);
 
     const checkedDish = order.find(el => el.id === data.id);
     const addDefaultSrc = e => {
@@ -40,7 +44,9 @@ export default function Dish({ data, flag }) {
                     </div>
 
                     <div className={s.box}>
-                        <p className={s.price}>{data.price} p.</p>
+                        <p className={s.price}>
+                            {data.price} {language ? 'р.' : 'rub'}
+                        </p>
                         {checkedDish ? (
                             <Counter el={checkedDish} />
                         ) : (

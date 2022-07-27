@@ -32,7 +32,9 @@ export default function Order() {
             <div className={s.orderBlock} onClick={handleClick}>
                 <span>{language ? 'Ваш заказ' : 'Your order'}</span>
                 <span className={s.sum}> {countDishes}</span>
-                <span> {sum}р.</span>
+                <span>
+                    {sum} {language ? 'р' : 'rub'}
+                </span>
             </div>
         </>
     );

@@ -96,9 +96,7 @@ const Navigation = () => {
                     onClick={() => getActiveMenu('saladsAndSnacks')}
                 >
                     <ScrollToButton toId="saladsAndSnacks">
-                        {language
-                            ? 'Салаты и закуски'
-                            : 'Salads and Snacks'}
+                        {language ? 'Салаты и закуски' : 'Starters'}
                     </ScrollToButton>
                 </div>
 
@@ -165,7 +163,7 @@ const Navigation = () => {
                     onClick={() => getActiveMenu('drinks')}
                 >
                     <ScrollToButton toId="drinks">
-                        {language ? 'Напитки' : 'Drinks'}
+                        {language ? 'Напитки' : 'Beverages'}
                     </ScrollToButton>
                 </div>
             </Slider>
