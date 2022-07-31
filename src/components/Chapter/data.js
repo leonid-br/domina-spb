@@ -557,7 +557,7 @@ const data = {
             {
                 id: 78,
                 name: 'Вино красное CHIANTI Classico ReservaSan Felice il Grigio, Toscana',
-                price: 81000,
+                price: 8100,
                 description: '750 мл',
                 flag: 'bev',
             },
@@ -1132,7 +1132,7 @@ const data = {
             {
                 id: 78,
                 name: 'Red wine CHIANTI Classico ReservaSan Felice il Grigio, Toscana',
-                price: 81000,
+                price: 8100,
                 description: '750 ml',
                 flag: 'bev',
             },

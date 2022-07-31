@@ -7,7 +7,7 @@ export default function Modal({ language, onClick }) {
                 <p className={s.text}>
                     {language
                         ? 'Благодарим за заказ. В ближайшие 5 минут мы перезвоним Вам для его подтверждения.'
-                        : 'Thank you for your order. In the next 5 minutes we will call you back to confirm it.'}
+                        : 'Thank you for your order. We will call you back to confirm it within 5 minutes.'}
                 </p>
                 <button
                     type="button"
