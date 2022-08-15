@@ -1,16 +1,15 @@
-import { useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 import { getOrder } from 'redux/order/order-selectors';
 import { getLanguage } from 'redux/language/language-selectors';
+import { getBasket } from 'redux/basket/basket-actions';
 
 import s from './Order.module.css';
 
 export default function Order() {
     const { order } = useSelector(getOrder);
     const { language } = useSelector(getLanguage);
-
-    const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     const getSumOrder = () =>
         order.reduce((acc, cur) => acc + cur.price * cur.ammount, 0);
@@ -25,7 +24,7 @@ export default function Order() {
         0,
     );
     const handleClick = () => {
-        navigate('/basket');
+        dispatch(getBasket(true));
     };
     return (
         <>

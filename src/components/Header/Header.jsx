@@ -1,28 +1,27 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { useLocation, useNavigate } from 'react-router-dom';
 
 import actions from 'redux/language/language-action';
+import { getBasket } from 'redux/basket/basket-actions';
 
 import { Switch } from 'react-switch-input';
 import { getLanguage } from 'redux/language/language-selectors';
+import { getBasketState } from 'redux/basket/basket-selectors';
 
 import logo from './logo.jpg';
 
 import s from './Header.module.css';
 
 const Header = () => {
-    const location = useLocation();
-    const navigate = useNavigate();
-
     const dispatch = useDispatch();
     const { language } = useSelector(getLanguage);
+    const { basket } = useSelector(getBasketState);
 
     const handleChange = e => {
         dispatch(actions.changeLanguage(!e.target.checked));
     };
 
     const handleClick = () => {
-        navigate('/');
+        dispatch(getBasket(false));
     };
 
     return (
@@ -34,7 +33,7 @@ const Header = () => {
                 onClick={handleClick}
             />
 
-            {location.pathname === '/basket' ? (
+            {basket === true ? (
                 <svg
                     width="20"
                     height="40"

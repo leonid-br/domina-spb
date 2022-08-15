@@ -1,5 +1,5 @@
-import { Route, Routes, useLocation } from 'react-router-dom';
-import { Suspense } from 'react';
+// import { Route, Routes, useLocation } from 'react-router-dom';
+import { Suspense, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 
 import Header from './Header';
@@ -10,38 +10,40 @@ import Basket from './Basket';
 import ScrollToTop from 'utils/ScrollToTop';
 
 import { getOrder } from 'redux/order/order-selectors';
+import { getLanguage } from 'redux/language/language-selectors';
+import { getBasketState } from 'redux/basket/basket-selectors';
 
 import s from './App.module.css';
 
 function App() {
     const { order } = useSelector(getOrder);
+    const { language } = useSelector(getLanguage);
+    const { basket } = useSelector(getBasketState);
 
-    const location = useLocation();
+    useEffect(() => {
+        if (language) {
+            document.title =
+                'Room service меню, Domina St.Petersburg';
+        } else {
+            document.title =
+                'Room service menu, Domina St.Petersburg';
+        }
+    }, [language]);
 
     return (
         <div className={s.app}>
             <div className={s.title}>
                 <Header />
-                {location.pathname === '/basket' ? (
-                    ''
-                ) : (
-                    <Navigation />
-                )}
+                {basket === true ? '' : <Navigation />}
             </div>
 
             <Suspense fallback={<h2>Loading...</h2>}>
                 <ScrollToTop>
-                    <Routes>
-                        <Route path="/" element={<Menu />} />
-                        <Route path="/basket" element={<Basket />} />
-                    </Routes>
+                    {basket ? <Basket /> : <Menu />}
                 </ScrollToTop>
             </Suspense>
-            {order.length !== 0 && location.pathname !== '/basket' ? (
-                <Order />
-            ) : (
-                ''
-            )}
+
+            {order.length !== 0 && basket === false ? <Order /> : ''}
         </div>
     );
 }

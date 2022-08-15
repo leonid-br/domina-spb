@@ -1,6 +1,5 @@
 import { useState, useRef, useMemo, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
 import emailjs from '@emailjs/browser';
 import { ToastContainer, toast } from 'react-toastify';
 
@@ -9,6 +8,7 @@ import SvgPlus from 'components/Svg/SvgPlus';
 import Modal from 'components/Modal';
 
 import actions from 'redux/order/order-actions';
+import { getBasket } from 'redux/basket/basket-actions';
 
 import { getLanguage } from 'redux/language/language-selectors';
 import { getOrder } from 'redux/order/order-selectors';
@@ -29,13 +29,12 @@ export default function Basket() {
     const { order } = useSelector(getOrder);
 
     const dispatch = useDispatch();
-    const navigate = useNavigate();
 
     useEffect(() => {
         if (order.length === 0) {
-            navigate('/');
+            dispatch(getBasket(false));
         }
-    }, [navigate, order]);
+    }, [dispatch, order]);
 
     const getTotalAmmountOrder = order =>
         order.reduce(
@@ -78,24 +77,6 @@ export default function Basket() {
                 },
             );
         }
-        // const reg = /\b([2-7][0-2][0-9])\b/gm;
-        // if (!reg.test(roomNumber)) {
-        //     return toast.warn(
-        //         language
-        //             ? 'Введён некоррекнтый номер комнаты'
-        //             : 'Invalid room number entered',
-        //         {
-        //             position: 'top-center',
-        //             autoClose: 2500,
-        //             hideProgressBar: false,
-        //             closeOnClick: true,
-        //             pauseOnHover: true,
-        //             draggable: true,
-        //             progress: undefined,
-        //             theme: 'colored',
-        //         },
-        //     );
-        // }
 
         emailjs
             .sendForm(
@@ -219,11 +200,6 @@ export default function Basket() {
                         onChange={handleChange}
                         required
                     />
-                    {/* <datalist id="numbers">
-                        {numbers.map((item, key) => (
-                            <option key={key} value={item} />
-                        ))}
-                    </datalist> */}
                 </label>
 
                 <span className={s.commentSpan}>
