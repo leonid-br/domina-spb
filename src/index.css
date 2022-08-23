@@ -34,3 +34,46 @@ button {
 a {
     text-decoration: none;
 }
+
+.overlay {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+
+    width: 100vw;
+    height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: rgba(0, 0, 0, 0.5);
+
+    z-index: 1200;
+    transform: translate(-50%, -50%);
+}
+
+.popup {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    width: 90%;
+
+    border-radius: 4px;
+
+    transform: translate(-50%, -50%) scale(1);
+    transition-property: transform;
+    transition-duration: 250ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.popUpPhoto {
+    border-radius: 10px;
+}
+
+.closeBtn {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 10px;
+}

@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import Counter from 'components/Counter';
@@ -7,11 +8,14 @@ import { getOrder } from 'redux/order/order-selectors';
 import { getLanguage } from 'redux/language/language-selectors';
 
 import SvgPlus from 'components/Svg/SvgPlus';
+import PopUp from 'utils/PopUp';
 
 import test from 'images/1.jpg';
 import s from './Dish.module.css';
 
 export default function Dish({ data, flag }) {
+    const [openPhoto, setOpenPhoto] = useState(null);
+
     const dispatch = useDispatch();
 
     const { order } = useSelector(getOrder);
@@ -20,6 +24,10 @@ export default function Dish({ data, flag }) {
     const checkedDish = order.find(el => el.id === data.id);
     const addDefaultSrc = e => {
         e.target.src = test;
+    };
+
+    const toggleModal = () => {
+        setOpenPhoto(!openPhoto);
     };
 
     return (
@@ -33,6 +41,7 @@ export default function Dish({ data, flag }) {
                         src={`images/${data.id}.jpg`}
                         alt={data.name}
                         className={s.img}
+                        onClick={() => toggleModal()}
                     />
                 )}
                 <div className={s.description}>
@@ -62,6 +71,7 @@ export default function Dish({ data, flag }) {
                     </div>
                 </div>
             </div>
+            {openPhoto && <PopUp data={data} onClose={toggleModal} />}
         </>
     );
 }
