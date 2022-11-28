@@ -30,6 +30,14 @@ export default function Basket() {
 
     const dispatch = useDispatch();
 
+    const BOT_TOKEN = process.env.REACT_APP_BOT_TOKEN;
+    const CHAT_ID = process.env.REACT_APP_CHAT_ID;
+
+    const TEMPLATE_ID = process.env.REACT_APP_TEMPLATE_ID;
+    const SERVICE_ID = process.env.REACT_APP_SERVICE_ID;
+    const PUBLIC_KEY = process.env.REACT_APP_PUBLIC_KEY;
+
+
     useEffect(() => {
         if (order.length === 0) {
             dispatch(getBasket(false));
@@ -85,16 +93,16 @@ export default function Basket() {
         }
 
         str = `Заказ из номера:  ${roomNumber}%0A${str}%0AКомментарий к заказу:%0A${comment}`
-        fetch(`https://api.telegram.org/bot5970204433:AAEHZo1c7yH3YSaLac9YR-Dwd1Sz7OkpcIE/sendMessage?chat_id=-1001655019285&text=${str}`)
+        fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage?chat_id=-${CHAT_ID}&text=${str}`)
      
         
 // отправка на почту
         emailjs
             .sendForm(
-                api.SERVICE_ID,
-                api.TEMPLATE_ID,
+                SERVICE_ID,
+                TEMPLATE_ID,
                 form.current,
-                api.PUBLIC_KEY,
+                PUBLIC_KEY,
             )
             .then(
                 result => {
