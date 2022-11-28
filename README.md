@@ -1,1 +1,1 @@
- https://spb-dominarussia.netlify.app
+https://rsmenu-dominarussia.netlify.app/
