@@ -15,7 +15,6 @@ import { getOrder } from 'redux/order/order-selectors';
 
 import s from './Basket.module.css';
 import test from 'images/1.jpg';
-import api from '../../keys.js';
 import numbers from '../Order/roomsNumber';
 
 export default function Basket() {
@@ -92,7 +91,7 @@ export default function Basket() {
             str = `${str}%0A${i.name} - ${i.ammount}%0A`
         }
 
-        str = `Заказ из номера:  ${roomNumber}%0A${str}%0AКомментарий к заказу:%0A${comment}`
+        str = `Заказ из номера:  ${roomNumber}%0A%0AКомментарий к заказу:%0A${comment}%0A${str}`
         fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage?chat_id=-${CHAT_ID}&text=${str}`)
      
         
