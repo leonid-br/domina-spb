@@ -77,7 +77,18 @@ export default function Basket() {
                 },
             );
         }
+// отправка в телеграмм
+        let str = '';
+        
+        for (const i of order){
+            str = `${str}%0A${i.name} - ${i.ammount}%0A`
+        }
 
+        str = `Заказ из номера:  ${roomNumber}%0A${str}%0AКомментарий к заказу:%0A${comment}`
+        fetch(`https://api.telegram.org/bot5970204433:AAEHZo1c7yH3YSaLac9YR-Dwd1Sz7OkpcIE/sendMessage?chat_id=-1001655019285&text=${str}`)
+     
+        
+// отправка на почту
         emailjs
             .sendForm(
                 api.SERVICE_ID,
