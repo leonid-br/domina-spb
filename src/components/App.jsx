@@ -38,7 +38,7 @@ function App() {
             </div>
 
             <Suspense fallback={<h2>Loading...</h2>}>
-                <ScrollToTop>
+                <ScrollToTop flag={basket}>
                     {basket ? <Basket /> : <Menu />}
                 </ScrollToTop>
             </Suspense>

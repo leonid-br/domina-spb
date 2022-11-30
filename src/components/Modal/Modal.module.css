@@ -1,9 +1,19 @@
 .overlay {
-    position: absolute;
-    top: 0;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+
+    width: 100vw;
+    height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
     background-color: rgba(0, 0, 0, 0.5);
-    width: 100%;
-    height: 100%;
+
+    z-index: 1200;
+    transform: translate(-50%, -50%);
 }
 
 .overlayConent {
@@ -45,7 +55,7 @@
     font-size: 14px;
     letter-spacing: 0.06em;
 
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.15);
     background: var(--color-active);
     color: white;
 }

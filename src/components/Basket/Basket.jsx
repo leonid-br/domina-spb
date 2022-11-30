@@ -2,6 +2,7 @@ import { useState, useRef, useMemo, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import emailjs from '@emailjs/browser';
 import { ToastContainer, toast } from 'react-toastify';
+import { RotatingLines } from 'react-loader-spinner';
 
 import Counter from 'components/Counter';
 import SvgPlus from 'components/Svg/SvgPlus';
@@ -21,6 +22,7 @@ export default function Basket() {
     const [roomNumber, setRoomNumber] = useState('');
     const [comment, setComment] = useState('');
     const [modal, setModal] = useState(false);
+    const [fetchOrder, setFetchOrder] = useState(false);
 
     const form = useRef();
 
@@ -34,8 +36,8 @@ export default function Basket() {
 
     const TEMPLATE_ID = process.env.REACT_APP_TEMPLATE_ID;
     const SERVICE_ID = process.env.REACT_APP_SERVICE_ID;
+    // const SERVICE_ID = 123;
     const PUBLIC_KEY = process.env.REACT_APP_PUBLIC_KEY;
-
 
     useEffect(() => {
         if (order.length === 0) {
@@ -65,6 +67,7 @@ export default function Basket() {
         setRoomNumber('');
         setComment('');
     };
+
     const handleSubmit = e => {
         e.preventDefault();
         if (!numbers.find(el => el === Number(roomNumber))) {
@@ -84,34 +87,75 @@ export default function Basket() {
                 },
             );
         }
-// отправка в телеграмм
+        // сообщение в телеграмм
         let str = '';
-        
-        for (const i of order){
-            str = `${str}%0A${i.name} - ${i.ammount}%0A`
-        }
 
-        str = `Заказ из номера:  ${roomNumber}%0A%0AКомментарий к заказу:%0A${comment}%0A${str}`
-        fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage?chat_id=-${CHAT_ID}&text=${str}`)
-     
-        
-// отправка на почту
-        emailjs
-            .sendForm(
-                SERVICE_ID,
-                TEMPLATE_ID,
-                form.current,
-                PUBLIC_KEY,
-            )
-            .then(
-                result => {
-                    console.log(form.current);
-                },
-                error => {
-                    console.log(error.text);
-                },
-            );
-        setModal(true);
+        for (const i of order) {
+            if (i.name.includes('&')) {
+                const newStr = i.name.replace('&', '%26');
+                str = `${str}%0A${newStr} - ${i.ammount}%0A`;
+            } else {
+                str = `${str}%0A${i.name} - ${i.ammount}%0A`;
+            }
+        }
+        str = `Заказ из номера:  ${roomNumber}%0A%0AКомментарий к заказу:%0A${comment}%0A${str}`;
+
+        try {
+            let res = null;
+
+            (async () => {
+                setFetchOrder(true);
+
+                // отправка в телеграмм
+                const response = await fetch(
+                    `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage?chat_id=-${CHAT_ID}&text=${str}`,
+                );
+
+                // отправка на почту
+                await emailjs
+                    .sendForm(
+                        SERVICE_ID,
+                        TEMPLATE_ID,
+                        form.current,
+                        PUBLIC_KEY,
+                    )
+                    .then(
+                        result => {
+                            res = result.status;
+                        },
+                        error => {
+                            res = error.status;
+                        },
+                    );
+
+                if (
+                    // response.status === 200 ||
+                    res === 200
+                ) {
+                    setFetchOrder(false);
+                    setModal(true);
+                } else {
+                    toast.warn(
+                        language
+                            ? 'Уважаемые гости, По техническим причинам, в настоящий момент онлайн заказ в номер недоступен. Приносим извинения за доставленные неудобства. Пожалуйста свяжитесь с отделом RoomService по телефону 1070'
+                            : 'Dear guests, Due to technical problems, online order is not available at the moment. Please contact Room Service 📞 1070. We apologies for the inconvenience.',
+                        {
+                            position: 'top-center',
+                            autoClose: 10000,
+                            hideProgressBar: false,
+                            closeOnClick: true,
+                            pauseOnHover: true,
+                            draggable: true,
+                            progress: undefined,
+                            theme: 'colored',
+                        },
+                    );
+                    setFetchOrder(false);
+                }
+            })();
+        } catch (e) {
+            console.log(e);
+        }
     };
     const addDefaultSrc = e => {
         e.target.src = test;
@@ -255,9 +299,18 @@ export default function Basket() {
                 <button
                     type="submit"
                     className={s.btn}
-                    disabled={!roomNumber}
+                    disabled={!roomNumber || fetchOrder}
                 >
-                    {language ? 'Отправить заказ' : 'Send your order'}
+                    {fetchOrder ? (
+                        <RotatingLines
+                            width="20"
+                            strokeColor="white"
+                        />
+                    ) : language ? (
+                        'Отправить заказ'
+                    ) : (
+                        'Send your order'
+                    )}
                 </button>
             </form>
             <ToastContainer
@@ -272,10 +325,8 @@ export default function Basket() {
                 pauseOnHover
                 theme="colored"
             />
-            {modal ? (
+            {modal && (
                 <Modal language={language} onClick={handleClick} />
-            ) : (
-                ''
             )}
         </div>
     ) : (

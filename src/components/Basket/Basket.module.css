@@ -90,24 +90,26 @@
 }
 
 .btn {
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
     width: 160px;
+    height: 36px;
     border: none;
     border-radius: 4px;
 
     margin-left: auto;
     margin-right: auto;
     margin-top: 30px;
-    margin-bottom: 20px;
-    padding: 5px;
-    padding-top: 8px;
-    padding-bottom: 8px;
+    margin-bottom: 100px;
+    padding: 0px;
 
     font-weight: bold;
     font-size: 14px;
     letter-spacing: 0.06em;
 
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.15);
     background: var(--color-active);
     color: white;
 }
