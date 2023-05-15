@@ -36,7 +36,6 @@ export default function Basket() {
 
     const TEMPLATE_ID = process.env.REACT_APP_TEMPLATE_ID;
     const SERVICE_ID = process.env.REACT_APP_SERVICE_ID;
-    // const SERVICE_ID = 123;
     const PUBLIC_KEY = process.env.REACT_APP_PUBLIC_KEY;
 
     useEffect(() => {
@@ -128,10 +127,7 @@ export default function Basket() {
                         },
                     );
 
-                if (
-                    // response.status === 200 ||
-                    res === 200
-                ) {
+                if (response.status === 200 || res === 200) {
                     setFetchOrder(false);
                     setModal(true);
                 } else {

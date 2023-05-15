@@ -22,9 +22,6 @@ export default function Dish({ data, flag }) {
     const { language } = useSelector(getLanguage);
 
     const checkedDish = order.find(el => el.id === data.id);
-    const addDefaultSrc = e => {
-        e.target.src = test;
-    };
 
     const toggleModal = () => {
         setOpenPhoto(!openPhoto);
@@ -37,8 +34,11 @@ export default function Dish({ data, flag }) {
                     ''
                 ) : (
                     <img
-                        onError={addDefaultSrc}
                         src={`images/${data.id}.jpg`}
+                        onError={({ currentTarget }) => {
+                            currentTarget.onerror = null;
+                            currentTarget.src = test;
+                        }}
                         alt={data.name}
                         className={s.img}
                         onClick={() => toggleModal()}
